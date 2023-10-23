@@ -61,7 +61,9 @@ def analys_feeling(tweet) :
         sentiment += "0"
     return sentiment
 
-## Faire le top K des hashatgs du jeu du tweet :
 
-def topK_hashtag(liste) :
-    pass
+liste_hash = []
+liste_ment = []
+for i in range(len(donnees)) : 
+    liste_hash.append(liste_hashtags(donnees[i]["TweetText"]))
+    liste_ment.append(liste_mentions(donnees[i]["TweetText"]))
