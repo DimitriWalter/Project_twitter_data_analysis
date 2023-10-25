@@ -20,11 +20,22 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
         split = tweet.split() ## Si il y en a, alors on utilise .split() pour séparer les mots du tweet
         for elmnt in split : ## On parcoure tous les éléments
             if "#" in elmnt : ## Si il y a un # dans un élément cela signifie que c'est un des hashtag du tweeet
-                liste_h.append(elmnt) ## J'ajoute alors mon élément contenant le hashtag à ma liste
+                if elmnt[:-1] != "#" :
+                    if elmnt == split[-1] :
+                        liste_h.append(elmnt.lower()[:-1])
+                    elif elmnt[-1] == "," or elmnt[-1] == ";" or elmnt[-1] == "." or elmnt[-1] == "]" or elmnt[-1] == "?" or elmnt[-1] == ")" or elmnt[-1] == ":" or elmnt[-1] == "!" : 
+                        if elmnt[0] == "(" or elmnt[0] == '"' :
+                            liste_h.append(elmnt.lower()[1:-1])
+                    elif elmnt[-2:] == ",…" or elmnt[-2:] == ")," :
+                        liste_h.append(elmnt.lower()[:-2])
+                    else : 
+                        liste_h.append(elmnt.lower()[:-1])
+                else :
+                    liste_h.append(elmnt.lower()) ## J'ajoute alors mon élément contenant le hashtag à ma liste
         return liste_h ## je retourne ma liste contenant la liste des hashtags
     else :
         liste_h = []
-        return liste_h ## Si, au contraire il n'y en a pas, alors on renvoie une liste vid
+        return liste_h ## Si, au contraire il n'y en a pas, alors on renvoie une liste vide
 
 
 ## Extraire la liste des mentions de la publication :
@@ -67,3 +78,32 @@ liste_ment = []
 for i in range(len(donnees)) : 
     liste_hash.append(liste_hashtags(donnees[i]["TweetText"]))
     liste_ment.append(liste_mentions(donnees[i]["TweetText"]))
+
+for elt in liste_hash :
+    for h in elt :
+        for i in range(65,91) :
+            if h[-1] == chr(i).lower() or h[-1] == "0" or h[-1] == "1" or h[-1] == "2" or h[-1] == "3" or h[-1] == "4" or h[-1] == "5" or h[-1] == "6" or h[-1] == "7" or h[-1] == "8" or h[-1] == "9"   :
+                s = 1
+                break
+            else : 
+                s= 0
+        if s == 0 :
+            print(h,liste_hash.index(elt))
+
+
+list_temp = []
+list_count = []
+dicK_hashtags = {}
+for elt in liste_hash :
+    if elt != [] :
+        for h in elt :
+            if h not in list_temp :
+                list_temp.append(h)
+                list_count.append(1)
+            else :
+                i = list_temp.index(h)
+                list_count[i] += 1
+
+
+def topK_hashtags(k) :
+    pass
