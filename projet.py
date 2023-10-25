@@ -30,9 +30,10 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
                 else :
                     for c in elmnt[1:] :
                         if c not in list_min and c not in list_maj and c not in list_nb :
-                            i = elmnt.index(c)
                             h = elmnt.split(elmnt[i])
                             print(h)
+                        else :
+
         return liste_h
     else :
         liste_h = []
