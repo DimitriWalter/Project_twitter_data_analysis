@@ -10,36 +10,35 @@ for ligne in jeu_tweet :
     tweet = json.loads(ligne)
     donnees.append(tweet)
 
-list_nb = [i for i in range(0,10)]
+list_nb = [str(i) for i in range(0,10)]
 list_maj = [chr(i) for i in range(65,91)]
 list_min =  [chr(i) for i in range(97,123)]
-print(list_nb)
+
 
 ## Extraire la liste des hashtags de la publication :
 
 def liste_hashtags(tweet) : ## on prend le tweet en argument
     s = 0
+    listez = []
     liste_h = [] ## initialise la liste qui va contenier les différents hashtags ou pas
     if "#" in tweet : ## Tout d'abord, on vérifie la présence d'hashtags dans la publication
         split = tweet.split() ## Si il y en a, alors on utilise .split() pour séparer les mots du tweet
-        print(split)
         for elmnt in split : ## On parcoure tous les éléments
-            if "#" in elmnt : ## Si il y a un # dans un élément cela signifie que c'est un des hashtag du tweet
-                if elmnt == split[-1] :
-                    liste_h.append(elmnt[:-1])
-                else :
-                    for c in elmnt[1:] :
-                        if c not in list_min and c not in list_maj and c not in list_nb :
-                            h = elmnt.split(elmnt[i])
-                            print(h)
-                        else :
+            if "#" in elmnt and elmnt[0] == "#" : ## Si il y a un # dans un élément cela signifie que c'est un des hashtag du tweet
+                for c in elmnt[1:] :
+                    if c not in list_min and c not in list_maj and c not in list_nb :
+                        s = 1
+                        hash = elmnt.split(c)
+                    if s == 1 :
+                        liste_h.append(hash[0])
+                if s == 0 :
+                    liste_h.append(elmnt.lower())
+            elif "#" in elmnt and elmnt[0] != "#" :
+                for chr in elmnt :
+                    pass
+    return liste_h
 
-        return liste_h
-    else :
-        liste_h = []
-        return liste_h ## Si, au contraire il n'y en a pas, alors on renvoie une liste vide
 
-print(liste_hashtags(donnees[54]['TweetText']))
 
 ## Extraire la liste des mentions de la publication :
 
@@ -75,14 +74,18 @@ def analys_feeling(tweet) :
         sentiment += "0"
     return sentiment
 
-'''
+
 liste_hash = []
 liste_ment = []
 for i in range(len(donnees)) : 
     liste_hash.append(liste_hashtags(donnees[i]["TweetText"]))
     liste_ment.append(liste_mentions(donnees[i]["TweetText"]))
 
-
+for elt in liste_hash :
+    for c in elt : 
+        if "#" in c and c[0] != "#" :
+            print(elt,liste_hash.index(elt))
+'''
 for elt in liste_ment :
     for h in elt :
         for i in range(65,91) :
