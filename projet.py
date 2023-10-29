@@ -19,23 +19,35 @@ list_min =  [chr(i) for i in range(97,123)]
 
 def liste_hashtags(tweet) : ## on prend le tweet en argument
     s = 0
-    listez = []
     liste_h = [] ## initialise la liste qui va contenier les différents hashtags ou pas
     if "#" in tweet : ## Tout d'abord, on vérifie la présence d'hashtags dans la publication
         split = tweet.split() ## Si il y en a, alors on utilise .split() pour séparer les mots du tweet
         for elmnt in split : ## On parcoure tous les éléments
-            if "#" in elmnt and elmnt[0] == "#" : ## Si il y a un # dans un élément cela signifie que c'est un des hashtag du tweet
-                for c in elmnt[1:] :
-                    if c not in list_min and c not in list_maj and c not in list_nb :
-                        s = 1
+            if "#" in elmnt and elmnt[0] == "#" : ## Si il y a un # dans un élément cela signifie que c'est un des hashtag du tweet (la 2ème condition est utilisé pour traiter les différents formats de hashtags)
+                for c in elmnt[1:] : ## On parcoure la chaîne de caractère du hashtag
+                    if c not in list_min and c not in list_maj and c not in list_nb : ## On teste si le caractère est un chiffre ou une lettre (miniscule ou majuscule)
+                        s = 1 ## 
                         hash = elmnt.split(c)
-                    if s == 1 :
-                        liste_h.append(hash[0])
+                        break
+                if s == 1 and hash[0] != "#" :
+                        liste_h.append(hash[0].lower())
                 if s == 0 :
                     liste_h.append(elmnt.lower())
             elif "#" in elmnt and elmnt[0] != "#" :
-                for chr in elmnt :
-                    pass
+                for c in elmnt :
+                    if c == "#" :
+                        i = elmnt.index(c)
+                        hash = elmnt.split(elmnt[i-1])
+                        break
+                for h in hash :
+                    if "#" in h :
+                        for c in h :
+                            if c not in list_min and c not in list_maj and c not in list_nb :
+                                s = 
+                                hash_final = h.split(c)
+                                break
+                        liste_h.append(hash_final[0].lower())
+
     return liste_h
 
 
@@ -81,10 +93,13 @@ for i in range(len(donnees)) :
     liste_hash.append(liste_hashtags(donnees[i]["TweetText"]))
     liste_ment.append(liste_mentions(donnees[i]["TweetText"]))
 
+print(liste_hash)
+
 for elt in liste_hash :
     for c in elt : 
-        if "#" in c and c[0] != "#" :
+        if "#" in c and (c[-1] not in list_maj and c[-1] not in list_min and c[-1] not in list_nb ) :
             print(elt,liste_hash.index(elt))
+
 '''
 for elt in liste_ment :
     for h in elt :
