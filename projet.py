@@ -10,6 +10,8 @@ for ligne in jeu_tweet :
     tweet = json.loads(ligne)
     donnees.append(tweet)
 
+## Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
+
 list_nb = [str(i) for i in range(0,10)]
 list_maj = [chr(i) for i in range(65,91)]
 list_min =  [chr(i) for i in range(97,123)] + ["-","_"]
@@ -27,7 +29,9 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
                     if (c not in list_min and c not in list_maj and c not in list_nb)  :    ## On teste si le caractère est un chiffre ou une lettre (miniscule ou majuscule) 
                         temp = 1     ## variable temporaire à 1 si un caractère remplit les conditions
                         hash = elmnt.split(c)     ## On sépare notre mot avec split() et comme argument le caractère spécial en question car on ne veut que l'hashtag pas de caractère spécial après
-                        break    ## Ainsi on stoppe la boucle for quand on l'a trouvé 
+                        break ## Ainsi on stoppe la boucle for quand on l'a trouvé 
+                    else :
+                        temp = 0
                 if temp == 1 and hash[0] != "#" : ## Si temp == 1 alors on est passé dans le if et on a split, la deuxième condition sert à ne pas prendre les hashtags tout seul sans mot après
                         liste_h.append(hash[0].lower()) ## On append donc le 1er élément de la liste (split) car notre hashtag n'est précédé par d'autres caractères donc le split se fera au premier chr spécial qui arrivera apres le hashtag 
                 if temp != 1 and elmnt != "#…" : ## Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
@@ -45,6 +49,8 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
                                 temp = 2 ## Si oui, variable temp à 2
                                 hash_final = h.split(c) ## Et je split au caractère spécial
                                 break ## Je stoppe une fois le caractère trouvé
+                            else :
+                                temp = 0
                         if temp == 2 : ## Si temp == 2 , alors je suis rentré dans le if
                             liste_h.append(hash_final[0].lower()) ## On append donc le 1er élément du split car notre hashtag n'est précédé par d'autres caractères donc le split se fera au premier chr spécial qui arrivera apres le hashtag
                         if temp != 2 : ## Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
@@ -57,12 +63,12 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
 ## Extraire la liste des mentions de la publication :
 
 def liste_mentions(tweet) :
-    temp = 0
     liste_m = []
     if "@" in tweet :
         split = tweet.split()
         for elmnt in split :
             if "@" in elmnt and elmnt[0] == "@" :
+                temp = 0
                 for c in elmnt[1:] :
                     if c not in list_maj and c not in list_min and c not in list_nb :
                         temp = 1
@@ -73,6 +79,7 @@ def liste_mentions(tweet) :
                 if temp != 1 and elmnt != "@…" :
                     liste_m.append(elmnt)
             elif "@" in elmnt and elmnt[0] != "@" :
+                temp = 0
                 for c in elmnt :
                     if c == "@" :
                         i = elmnt.index(c)
@@ -109,11 +116,14 @@ def analys_feeling(tweet) :
 
 ## Création de 2 listes contenant respectivement tous les hashtags et toutes les mentions de chaque publication
 
+
+
 liste_hash = []
 liste_ment = []
 for i in range(len(donnees)) :
     liste_hash.append(liste_hashtags(donnees[i]["TweetText"]))
     liste_ment.append(liste_mentions(donnees[i]['TweetText']))
+
 
 '''
 
@@ -131,7 +141,7 @@ for elt in liste_ment :
             if c not in list_maj and c not in list_min and c not in list_nb :
                 print(h,liste_ment.index(elt))
 
-'''                
+'''           
 
 ## TopK des hashtags 
 
@@ -151,7 +161,7 @@ def topK_hashtags(k) :
         int(input(f"Désolé je ne peux pas t'imprimer le top {k} des hashtags car il n'y en a que {len(top)}, donne moi un nombre + petit : ")) ## Si k supérieur au nombre d'hashtags alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
     print(f"Voici le top {k} des hashtags qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} occurences.") ## On affiche le top K des hashtags avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des hashtags avec le nombres d'occurences à chaque fois
 
 '''
 
@@ -159,7 +169,6 @@ k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des hashtag
 topK_hashtags(k)
 
 '''
-
 
 ## TopK des mentions :
 
@@ -179,7 +188,7 @@ def topK_mentions(k) :
         k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des mentions car il n'y en a que {len(top)}, donne moi un nombre + petit : ")) ## Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
     print(f"Voici le top {k} des mentions qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} occurences.") ## On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des mentions avec le nombres d'occurences à chaque fois
 
 
 '''
@@ -188,3 +197,8 @@ k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des mention
 topK_mentions(k)
 
 '''
+
+## Le dictionnaire avec les hashtags les regroupe tous avec leur nombres de publication chacun,
+##  alors on a déjà le nombre de publications par hashtag.
+
+## L'ensemble des tweets mentionnant un utilisateur spécifique :
