@@ -12,9 +12,16 @@ for ligne in jeu_tweet :
 
 ## Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
 
+liste_atterissage =[chr(i) for i in range(33,127)]
 list_nb = [str(i) for i in range(0,10)]
 list_maj = [chr(i) for i in range(65,91)]
 list_min =  [chr(i) for i in range(97,123)] + ["-","_"]
+
+## Stockage dans zone d'atterissage :
+
+with open("zone_d'atterissage.json","w") as zone_att :
+    pass
+
 
 ## Extraire la liste des hashtags de la publication :
 
