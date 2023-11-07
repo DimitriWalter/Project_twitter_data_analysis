@@ -36,6 +36,7 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
                         liste_h.append(hash[0].lower()) ## On append donc le 1er élément de la liste (split) car notre hashtag n'est précédé par d'autres caractères donc le split se fera au premier chr spécial qui arrivera apres le hashtag 
                 if temp != 1 and elmnt != "#…" : ## Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
                     liste_h.append(elmnt.lower()) ## On l'append (à noter qu'on utilise lower() pour que les hashtags soit tous en miniscules et qu'on puisse les comparer facilement)
+            
             elif "#" in elmnt and elmnt[0] != "#" : ## Deuxième cas, si le mot contient un "#" mais qu'il ne commence pas par ce dernier donc par un caractère spe tel que , ou par une parenthèse etc
                 for c in elmnt : ## On parcoure chaque caractère du mot
                     if c == "#" : ## On teste si le caractère correspond au hashtag
@@ -143,7 +144,7 @@ for elt in liste_ment :
 
 '''           
 
-## TopK des hashtags 
+## TopK des hashtags :
 
 dicK_hashtags = {} ## Initialisation d'un dictionnaire qui contiendra touts les différents hashtags avec leur nombre d'occurences
 for elt in liste_hash : ## On parcoure notre liste contenant tous les hastags de chaque publication
@@ -191,14 +192,27 @@ def topK_mentions(k) :
         print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des mentions avec le nombres d'occurences à chaque fois
 
 
-'''
+
 
 k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des mentions : "))
 topK_mentions(k)
 
-'''
+
 
 ## Le dictionnaire avec les hashtags les regroupe tous avec leur nombres de publication chacun,
 ##  alors on a déjà le nombre de publications par hashtag.
 
 ## L'ensemble des tweets mentionnant un utilisateur spécifique :
+
+
+dico_tweets_mentions = {}
+for elt in liste_ment :
+    if elt != [] :
+        for mention in elt :
+            i = liste_ment.index(elt)
+            if mention not in dico_tweets_mentions :
+                dico_tweets_mentions[mention] = []
+                dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
+            else :
+                dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
+
