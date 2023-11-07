@@ -215,4 +215,3 @@ for elt in liste_ment :
                 dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
             else :
                 dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
-
