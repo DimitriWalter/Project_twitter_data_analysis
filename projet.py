@@ -1,6 +1,7 @@
 from ast import Load
 import json
 from textblob import TextBlob
+import re 
 
 with open("aitweets.json", 'r', encoding = 'utf-8') as file_json :
     jeu_tweet = file_json.readlines()
@@ -12,10 +13,21 @@ for ligne in jeu_tweet :
 
 ## Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
 
-liste_atterissage =[chr(i) for i in range(33,127)]
+liste_atterissage =[chr(i) for i in range(32,256)] + ["—","\n","’","…","–","•","”","“"]
+print(liste_atterissage)
 list_nb = [str(i) for i in range(0,10)]
 list_maj = [chr(i) for i in range(65,91)]
 list_min =  [chr(i) for i in range(97,123)] + ["-","_"]
+
+for i in range(len(donnees)) :
+    for mot in donnees[i]['TweetText'] :
+        if mot not in liste_atterissage :
+            print(i)
+            print(mot)
+    if donnees[i]["TweetLanguage"] != "en" :
+        print(donnees[i]["TweetLanguage"])
+    if i == 200 :
+        break
 
 ## Stockage dans zone d'atterissage :
 
@@ -25,7 +37,8 @@ with open("zone_d'atterissage.json","w") as zone_att :
 
 ## Extraire la liste des hashtags de la publication :
 
-def liste_hashtags(tweet) : ## on prend le tweet en argument
+def liste_hashtags(liste,i) : ## on prend le tweet en argument
+    tweet = liste[i]['TweetText']
     temp = 0     ## Initialisation d'une variable temporaire qu'on utilisera pour traiter les hashtags
     liste_h = []      ## On initialise la liste qui va contenier les différents hashtags ou pas
     if "#" in tweet :     ## Tout d'abord, on vérifie la présence d'hashtags dans la publication
@@ -70,7 +83,7 @@ def liste_hashtags(tweet) : ## on prend le tweet en argument
 
 ## Extraire la liste des mentions de la publication :
 
-def liste_mentions(tweet) :
+def liste_mentions(liste) :
     liste_m = []
     if "@" in tweet :
         split = tweet.split()
@@ -129,9 +142,19 @@ def analys_feeling(tweet) :
 liste_hash = []
 liste_ment = []
 for i in range(len(donnees)) :
-    liste_hash.append(liste_hashtags(donnees[i]["TweetText"]))
+    liste_hash.append(liste_hashtags(donnees,i))
     liste_ment.append(liste_mentions(donnees[i]['TweetText']))
 
+l = []
+for i in range(len(donnees)) :
+    if donnees[i]['TweetLanguage'] not in l :
+        l.append(donnees[i]['TweetLanguage'])
+    if donnees[i]['TweetLanguage'] == "" :
+        print(donnees[i]['TweetText'])
+
+langue = []
+
+print(l)
 
 '''
 
@@ -199,12 +222,12 @@ def topK_mentions(k) :
         print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des mentions avec le nombres d'occurences à chaque fois
 
 
-
+'''
 
 k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des mentions : "))
 topK_mentions(k)
 
-
+'''
 
 ## Le dictionnaire avec les hashtags les regroupe tous avec leur nombres de publication chacun,
 ##  alors on a déjà le nombre de publications par hashtag.
