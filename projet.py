@@ -13,21 +13,20 @@ for ligne in jeu_tweet :
 
 ## Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
 
-liste_atterissage =[chr(i) for i in range(32,256)] + ["—","\n","’","…","–","•","”","“"]
+liste_atterissage =[chr(i) for i in range(32,256)] + ["—","\n","’","…","–","”","“","‼","―","‘","€","\n\n"]
 print(liste_atterissage)
+
+lang_not_ascii = ["und","fa","ja","ar","ko"]
 list_nb = [str(i) for i in range(0,10)]
 list_maj = [chr(i) for i in range(65,91)]
 list_min =  [chr(i) for i in range(97,123)] + ["-","_"]
 
 for i in range(len(donnees)) :
-    for mot in donnees[i]['TweetText'] :
-        if mot not in liste_atterissage :
-            print(i)
-            print(mot)
-    if donnees[i]["TweetLanguage"] != "en" :
-        print(donnees[i]["TweetLanguage"])
-    if i == 200 :
-        break
+    if donnees[i]['TweetLanguage'] not in lang_not_ascii :
+        for mot in donnees[i]['TweetText'] :
+            if mot not in liste_atterissage :
+                print(i)
+                print(mot)
 
 ## Stockage dans zone d'atterissage :
 
@@ -145,16 +144,6 @@ for i in range(len(donnees)) :
     liste_hash.append(liste_hashtags(donnees,i))
     liste_ment.append(liste_mentions(donnees[i]['TweetText']))
 
-l = []
-for i in range(len(donnees)) :
-    if donnees[i]['TweetLanguage'] not in l :
-        l.append(donnees[i]['TweetLanguage'])
-    if donnees[i]['TweetLanguage'] == "" :
-        print(donnees[i]['TweetText'])
-
-langue = []
-
-print(l)
 
 '''
 
