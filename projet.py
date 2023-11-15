@@ -5,12 +5,8 @@ from textblob import TextBlob
 import re 
 
 with open("aitweets.json", 'r', encoding = 'utf-8') as file_json :
-    jeu_tweet = file_json.readlines()
+    donnees = json.load(file_json)
 
-donnees = []
-for ligne in jeu_tweet :
-    tweet = json.loads(ligne)
-    donnees.append(tweet)
 
 ## Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
 
@@ -305,6 +301,6 @@ for dic in donnees :
     dic["Autor"] = autor_temp
 
 with open("aitweets.json","w") as fjson :
-    json.dump(donnees,fjson,indent=2)
+    json.dump(donnees,fjson)
 
 '''
