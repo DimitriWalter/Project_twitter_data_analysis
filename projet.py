@@ -296,14 +296,13 @@ creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 't
                   'AWdnrz', 'nwpno', 'RrOx', 'qQiS', 'jf_MJHUKPLE', 'ebK-Wus', 'wApb', 'mB-QpawgcHH', 'uEeqD_GbEcT', 'bfcHeMMr', 'omAjKQ', 'ytYIFh', 'qvLIZfO', 'niicEgxDTo', 
                   'eeDMgzLP','rych']
 
-## Ajout des auteurs à chaque dictionnaire d'un tweet :
+## Ajout des auteurs à chaque dictionnaire d'un tweet et ajout dans le fichier json :
 
 '''
 
 for dic in donnees :
     autor_temp = rd.choice(creation_autor)
     dic["Autor"] = autor_temp
-
 
 with open("aitweets.json","w") as fjson :
     json.dump(donnees,fjson,indent=2)
