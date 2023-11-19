@@ -86,12 +86,13 @@ for dic in donnees :
 
 # Extraire la liste des hashtags de la publication :
 
-def liste_hashtags(liste,i) : ## on prend notre liste de data en argument avec la ligne que l'on veut
-    tweet = liste[i]['TweetText']
+
+def liste_hashtags(dict) : ## on prend notre liste de data en argument avec la ligne que l'on veut
+    tweet = dict['TweetText']
     liste_h = [] ## On initialise la liste qui va contenier les différents hashtags ou pas
     temp = 0 ## Initialisation d'une variable temporaire qu'on utilisera pour traiter les hashtags
     
-    if liste[i]["TweetLanguage"] in lang_not_ascii : ## Si les caractères de la langue ne sont pas dans le code ASCII, alors je vais traiter différemment
+    if dict["TweetLanguage"] in lang_not_ascii : ## Si les caractères de la langue ne sont pas dans le code ASCII, alors je vais traiter différemment
        if "#" in tweet :
            split = tweet.split()
            for elmnt in split :
@@ -146,12 +147,13 @@ def liste_hashtags(liste,i) : ## on prend notre liste de data en argument avec l
 
 # Extraire la liste des mentions de la publication :
 
-def liste_mentions(liste,i) :
-    tweet = liste[i]['TweetText']
+
+def liste_mentions(dict) :
+    tweet = dict['TweetText']
     liste_m = []
     temp = 0
 
-    if liste[i]["TweetLanguage"] in lang_not_ascii :
+    if dict["TweetLanguage"] in lang_not_ascii :
         if "@" in tweet :
            split = tweet.split()
            for elmnt in split :
@@ -174,9 +176,9 @@ def liste_mentions(liste,i) :
                            temp = 0
 
                     if temp == 1 and mention[0] != "@" :
-                        liste_m.append(mention[0].lower())
+                        liste_m.append(mention[0])
                     if temp != 1 and elmnt != "@…" :
-                        liste_m.append(elmnt.lower())
+                        liste_m.append(elmnt)
             
 
                 elif "@" in elmnt and elmnt[0] != "@" :
@@ -196,14 +198,15 @@ def liste_mentions(liste,i) :
                                     temp = 0
 
                            if temp == 2 :
-                                liste_m.append(ment_final[0].lower())
+                                liste_m.append(ment_final[0])
                            if temp != 2 :
-                              liste_m.append(m.lower())
+                              liste_m.append(m)
 
     return liste_m
 
 
 ## Analyser le sentiment du tweet :
+
 
 def analys_feeling(tweet) :
     sentiment = ""
@@ -217,15 +220,16 @@ def analys_feeling(tweet) :
         sentiment += "0"
     return sentiment
 
-## Création de 2 listes contenant respectivement tous les hashtags et toutes les mentions de chaque publication
 
+## Création de 2 listes contenant respectivement tous les hashtags et toutes les mentions de chaque publication
 
 
 liste_hash = []
 liste_ment = []
-for i in range(len(donnees)) :
-    liste_hash.append(liste_hashtags(donnees,i))
-    liste_ment.append(liste_mentions(donnees,i))
+
+for dic in donnees:
+    liste_hash.append(liste_hashtags(dic))
+    liste_ment.append(liste_mentions(dic))
 
 ## Test pour liste hashtag et liste mention :
 
@@ -260,13 +264,14 @@ for elt in liste_hash : ## On parcoure notre liste contenant tous les hastags de
 
 dicK_hashtags = dict(sorted(dicK_hashtags.items(), key = lambda item : item[1], reverse=True)) ## Trier le dictionnaire avec les hashtags par ordre décroissant
 
+
 def topK_hashtags(k) :
     top = list(dicK_hashtags.items()) ## On créé une liste contenant les items du dictionnaire
     while k > len(top) : ## On teste si la valeur k donnée n'est pas supérieur au nombre d'hashtags que l'on a
         k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des hashtags car il n'y en a que {len(top)}, donne moi un nombre + petit : ")) ## Si k supérieur au nombre d'hashtags alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
     print(f"Voici le top {k} des hashtags qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des hashtags avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.") ## On affiche le top K des hashtags avec le nombres d'occurences à chaque fois
 
 '''
 
@@ -287,14 +292,13 @@ for elt in liste_ment : ## On parcoure notre liste contenant toutes les mentions
 
 dicK_mentions = dict(sorted(dicK_mentions.items(), key = lambda item : item[1], reverse=True)) ## Trier le dictionnaire avec les mentions par ordre décroissant
 
-
 def topK_mentions(k):
     top = list(dicK_mentions.items())  # On créé une liste contenant les items du dictionnaire
     while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
         k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des mentions car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
     print(f"Voici le top {k} des mentions qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
 
 
 '''
@@ -306,23 +310,23 @@ topK_mentions(k)
 
 # Top k utilisateurs :
 
-dick_users = {}  # Initialisation d'un dictionnaire qui contiendra touts les différentes users avec leur nombre d'occurences
+dicK_users = {}  # Initialisation d'un dictionnaire qui contiendra touts les différentes users avec leur nombre d'occurences
 for user in liste_autor:  # On parcoure notre liste contenant les users de chaque publication
-    if user not in dick_users:  # On teste si l'user n'est pas déjà dans les clés du dictionnaire
-        dick_users[user] = 1  # Si oui, alors on créer une nouvelle clé dans le dictionnaire et on initialise son occurence à 1
+    if user not in dicK_users:  # On teste si l'user n'est pas déjà dans les clés du dictionnaire
+        dicK_users[user] = 1  # Si oui, alors on créer une nouvelle clé dans le dictionnaire et on initialise son occurence à 1
     else:
-        dick_users[user] += 1  # Sinon, on ajoute +1 à l'occurence du user déjà existant
+        dicK_users[user] += 1  # Sinon, on ajoute +1 à l'occurence du user déjà existant
 
-dick_users = dict(sorted(dick_users.items(), key=lambda item: item[1], reverse=True))  # Trier le dictionnaire avec les users par ordre décroissant
+dicK_users = dict(sorted(dicK_users.items(), key=lambda item: item[1], reverse=True))  # Trier le dictionnaire avec les users par ordre décroissant
 
 
 def topk_users(k):
-    top = list(dick_users.items())  # On créé une liste contenant les items du dictionnaire
+    top = list(dicK_users.items())  # On créé une liste contenant les items du dictionnaire
     while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
         k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des utilisateurs car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
     print(f"Top {k} des utilisateurs qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
 
 
 '''
@@ -338,27 +342,56 @@ topk_users(k)
 
 # L'ensemble des tweets mentionnant un utilisateur spécifique :
 
-dico_tweets_mentions = {}
+tweets_mentions = {}
 
-for elt in liste_ment:
-    for mention in elt:
-        i = liste_ment.index(elt)
-        if mention not in dico_tweets_mentions:
-            dico_tweets_mentions[mention] = []
-            dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
-        else:
-            dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
+for tweet in donnees :
+    temp = ""
+    if liste_mentions(tweet) != [] :
+        for elt in liste_mentions(tweet) :
+            if liste_mentions(tweet).count(elt) == 1 :
+                if elt not in tweets_mentions :
+                    tweets_mentions[elt] = []
+                    tweets_mentions[elt].append(tweet['TweetText'])
+                else :
+                    tweets_mentions[elt].append(tweet["TweetText"])
+            else :
+                if temp != elt :
+                    if elt not in tweets_mentions :
+                       tweets_mentions[elt] = []
+                       tweets_mentions[elt].append(tweet['TweetText'])
+                    else :
+                        tweets_mentions[elt].append(tweet["TweetText"])
+                temp = elt
+
+
+'''
+²
+# Test :
+
+for elt in tweets_mentions:
+    for tweet in tweets_mentions[elt] :
+        if tweets_mentions[elt].count(tweet) != 1 :
+            print(tweet,False)
+
+'''
+
+for elt in liste_hash :
+    for hash in elt :
+        if elt.count(hash) > 1 :
+            print(elt,elt.count(hash))
+
+
 
 # L'ensemble des tweets d'un utilisateur spécifique :
 
 dico_tweets_users = {}
 
-for dict in donnees:
-    if dict["Autor"] not in dico_tweets_users:
-        dico_tweets_users[dict["Autor"]] = []
-        dico_tweets_users[dict["Autor"]].append(dict["TweetText"])
+for dico in donnees:
+    if dico["Autor"] not in dico_tweets_users:
+        dico_tweets_users[dico["Autor"]] = []
+        dico_tweets_users[dico["Autor"]].append(dico["TweetText"])
     else:
-        dico_tweets_users[dict["Autor"]].append(dict["TweetText"])
+        dico_tweets_users[dico["Autor"]].append(dico["TweetText"])
 
 '''
 
@@ -373,34 +406,61 @@ print(dico_tweets_users["gkUva"] == l)
 
 '''
 
-# Utilisateurs mentionnant un hashtag spécifique :
+# Utilisateurs mentionnant un hashtag spécifique (pas fini tout a refaire):
 
 dico_hashtag_andUser = {}
 
-for elt in liste_hash:
-    for hashtag in elt:
-        i = liste_hash.index(elt)
-        if hashtag not in dico_hashtag_andUser:
-            dico_hashtag_andUser[hashtag] = []
-            dico_hashtag_andUser[hashtag].append(donnees[i]["Autor"])
-        else:
-            if donnees[i]["Autor"] not in dico_hashtag_andUser[hashtag] :
-                dico_hashtag_andUser[hashtag].append(donnees[i]["Autor"])
+for tweet in donnees :
+    temp = ""
+    if liste_hashtags(tweet) != [] :
+        for elt in liste_hashtags(tweet) :
+            if liste_hashtags(tweet).count(elt) == 1 :
+                if elt not in tweets_mentions :
+                    tweets_mentions[elt] = []
+                    tweets_mentions[elt].append(tweet['TweetText'])
+                else :
+                    tweets_mentions[elt].append(tweet["TweetText"])
+            else :
+                if temp != elt :
+                    if elt not in tweets_mentions :
+                       tweets_mentions[elt] = []
+                       tweets_mentions[elt].append(tweet['TweetText'])
+                    else :
+                        tweets_mentions[elt].append(tweet["TweetText"])
+                temp = elt
+
+
+
+
+for elt in liste_hash :
+    if liste_hash.count(elt) != 1 :
+        print(elt,False)
+
+
+# Test :
+
+
+ltest = []
+
+for dict in donnees:
+    if "#ai" in liste_hashtags(dict):
+        if dict["Autor"] not in ltest :
+            ltest.append(dict["Autor"])
+
+for elt in dico_hashtag_andUser["#ai"] :
+    if elt not in ltest :
+        print(False)
+
+ltest2 = []
+for autor in dico_hashtag_andUser['#ai'] :
+    ltest2.append(dico_hashtag_andUser['#ai'].count(autor))
+
+for elt in ltest2 :
+    if elt != 1 :
+        print("errror")
+
 
 
 # Utilisateurs mentionnés par un utilisateur spécifique :
 
 dico_users_andMent = {}
-
-for autor in creation_autor:  # On parcoure tous les différents auteurs
-        dico_users_andMent[autor] = []  # Pour chacun, on créé une clé dans le dict avec comme valeur, une liste vide
-        for elt in liste_autor:  # On parcoure la liste des auteurs selon les publications
-            if elt == autor:  # Si l'user correspond à celui qu'on est en train de traiter
-                i = liste_autor.index(elt)  # On prend son indice dans la liste(car elle correspond à l'indice de la ligne où on trouvera les mentions de cette ligne même)
-                for mentions in liste_ment[i]:  # On parcoure toutes les mentions de cette ligne
-                    if dico_users_andMent[autor] == []:  # Si la liste des mentions de cet auteur est vide
-
-                        dico_users_andMent[autor].append(mentions)  # On ajoute la mention à la liste
-                    else:
-                        if mentions not in dico_users_andMent[autor]:  # Sinon si la liste des mentions de l'auteur est pas vide et la mention traitée ici n'est pas dans la liste
-                            dico_users_andMent[autor].append(mentions)  # On ajoute à la liste, la mention
