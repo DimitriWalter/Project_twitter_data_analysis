@@ -22,6 +22,59 @@ with open("zone_d'atterissage.json","w") as zone_att :
     pass
 
 
+## Création de notre liste des différents auteurs :
+
+'''
+
+creation_autor =[]
+l_temp = []
+l_temp.append(list_maj)
+l_temp.append(list_min)
+
+
+for i in range(200) :
+    j = rd.randint(4,11)
+    temp = ""
+    for k in range(j) :
+        t = rd.choice(l_temp)
+        c = rd.choice(t)
+        temp += c
+    creation_autor.append(temp)
+
+'''
+## Résultat de notre code au-dessus :
+
+creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc', 'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP', 
+                  'KQDaMDU', 'UrxlM', 'LsiMhk', 'xGvBpvfX', 'BBXyUra', 'qWI_CZdxcQ', 'UdgIO-AhaZ', 'ifbCjF', 'Eg_spzD', 'vaoDg', 'SNUvK', 'FtMxILoSV', '-EAMxOYM', '-gEakGDX_', 
+                  'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr', 'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio', 'GAhiPQW', 
+                  'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ', 'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx', 'BmXxVLNW', 'dqCXuk', 'gQ-T', 
+                  'ImYR', 'EWktbLHU', 'ydCeh', 'TbvL', 'jOhEZIg', 'lKTDRNKrUHh', 'BvvArd', 'sMZMytB', 'l-JqIY', 'mLZfvZRxT', 'slcbkwTtRYx', 'aOmVMx', 'JEkx', 'alKpczQ', 'roPNPOu', 
+                  'Ic-BCXOh', 'zInV', 'EcSYgj', 'Tt_m', 'tMMJXl', 'eFwuGW', 'eLbQFGR', 'vwTZ_FjbnN', 'owNOfEJsS', 'fvVXS', 'ZTvXRBpyb_', 'PbDDtxkShP', 'q_PdBNV', 'W-cka', 'xXgYOdcim', 
+                  'kbZSvWx', 'Qpwlh', 'ZVl_BJDHIW', 'kxgqyeDSPH', 'EjvTiaovQq', 'eGZv', 'vfgIl', 'XGpvCL_JKi', 'SVIS', 'wpvV-yaqd', 'DVMyGe', 'ViQrZQddkV', 'cmeuEJxPuN', 'CJfJGNkO', 
+                  'oS_gSU_-', 'ROAxw', 'sVHKHo', 'lskVug', 'yrHmcdeEqd', 'LBNksKv', '-JlyHvyZR', 'BHaUEm_nYaZ', 'sCgudeDyx', 'f-BDzNxq', 'HLI_IM', 'uVVPE', 'DHjRxj', 'nj-x-YO', 
+                  'YJdOld', 'FDKC', 'CeDR_KRa_n', 'E-RymAXdG', 'HcAhcJIyTZ', 'cOFPMmRMUOV', 'gkUva', 'yKqKL', 'CIqCKbyaKZD', 'kBGv', 'ENDNX', 'NEnXLWFTAy', 'sHirz-qB', 'yWHHaOi', 
+                  'hHUhxwlFTl', 'FnqN', 'OgtVXXjG', 'BUSdoVDqE', '-eVC', 'fpBStDcvV', 'HgFO', 'GIVwz', 'mBBnCVrRCf', 'JQXeThDiX', 'dDYAIXg-HX', 'rEHUe', 'ClN-FiOMW', 'ysrxvPWcn', 
+                  'UYBA', 'UXdM', 'aKtalHEVBpa', 'ZOTPWCt', 'YFWt', 'hoFYHGv', 'cZbXxiMSIhh', 'kFVWu_yrv', 'IHzXR', 'aRfxi', 'E-pI', 'rSVEXP', 'MyTrInLrbRe', 'rEWzWyhhuK', 
+                  'Asp-rtjyYC', 'tRJCQUMu', 'frWeeerEaM', 'FAcQwf', 'nGxkX', 'eDQFdAbFgcN', 'WA_qIaoRW', 'MyxKrj-Y', 'XVtO', 'wVplcKaZR', 'SJZbkiqQVd', 'TqMUdFJFQ', 'WBwWrlp', 
+                  'XBrdhy_M', 'QENk', 'HGil', 'cDLutGaEjeg', 'LVAdh', 'LUVVicKQ', 'GWyUX', 'haIen', 'nhrLpLGwG', 'stGisQXTgo_', 'PLELwexzOo', 'vANIN', 'dZFDq', 'TIKxWN', 'yKgyqpf', 
+                  'AWdnrz', 'nwpno', 'RrOx', 'qQiS', 'jf_MJHUKPLE', 'ebK-Wus', 'wApb', 'mB-QpawgcHH', 'uEeqD_GbEcT', 'bfcHeMMr', 'omAjKQ', 'ytYIFh', 'qvLIZfO', 'niicEgxDTo', 
+                  'eeDMgzLP','rych']
+
+
+## Ajout des auteurs à chaque dictionnaire d'un tweet et ajout dans le fichier json d'une clé "Autor" avec comme valeur l'auteur attribué :
+
+'''
+
+for dic in donnees :
+    autor_temp = rd.choice(creation_autor)
+    dic["Autor"] = autor_temp
+
+with open("aitweets.json","w") as fjson :
+    json.dump(donnees,fjson)
+
+
+'''
+
 ## Opérations de traitements : 
 
 # Identification de l'auteur :
@@ -234,13 +287,15 @@ for elt in liste_ment : ## On parcoure notre liste contenant toutes les mentions
 
 dicK_mentions = dict(sorted(dicK_mentions.items(), key = lambda item : item[1], reverse=True)) ## Trier le dictionnaire avec les mentions par ordre décroissant
 
-def topK_mentions(k) :
-    top = list(dicK_mentions.items()) ## On créé une liste contenant les items du dictionnaire
-    while k > len(top) : ## On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
-        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des mentions car il n'y en a que {len(top)}, donne moi un nombre + petit : ")) ## Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
+
+def topK_mentions(k):
+    top = list(dicK_mentions.items())  # On créé une liste contenant les items du dictionnaire
+    while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
+        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des mentions car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
     print(f"Voici le top {k} des mentions qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+
 
 '''
 
@@ -251,22 +306,24 @@ topK_mentions(k)
 
 # Top k utilisateurs :
 
-dick_users = {} ## Initialisation d'un dictionnaire qui contiendra touts les différentes users avec leur nombre d'occurences
-for user in liste_autor : ## On parcoure notre liste contenant les users de chaque publication
-    if user not in dick_users : ## On teste si l'user n'est pas déjà dans les clés du dictionnaire
-        dick_users[user] = 1 ## Si oui, alors on créer une nouvelle clé dans le dictionnaire et on initialise son occurence à 1
-    else :
-        dick_users[user] += 1 ## Sinon, on ajoute +1 à l'occurence du user déjà existant
+dick_users = {}  # Initialisation d'un dictionnaire qui contiendra touts les différentes users avec leur nombre d'occurences
+for user in liste_autor:  # On parcoure notre liste contenant les users de chaque publication
+    if user not in dick_users:  # On teste si l'user n'est pas déjà dans les clés du dictionnaire
+        dick_users[user] = 1  # Si oui, alors on créer une nouvelle clé dans le dictionnaire et on initialise son occurence à 1
+    else:
+        dick_users[user] += 1  # Sinon, on ajoute +1 à l'occurence du user déjà existant
 
-dick_users = dict(sorted(dick_users.items(), key = lambda item : item[1], reverse=True)) ## Trier le dictionnaire avec les users par ordre décroissant
+dick_users = dict(sorted(dick_users.items(), key=lambda item: item[1], reverse=True))  # Trier le dictionnaire avec les users par ordre décroissant
 
-def topk_users(k) :
-    top = list(dick_users.items()) ## On créé une liste contenant les items du dictionnaire
-    while k > len(top) : ## On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
-        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des utilisateurs car il n'y en a que {len(top)}, donne moi un nombre + petit : ")) ## Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
-    print(f"Voici le top {k} des utilisateurs qui reviennent le + souvent : \n")
+
+def topk_users(k):
+    top = list(dick_users.items())  # On créé une liste contenant les items du dictionnaire
+    while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
+        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des utilisateurs car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
+    print(f"Top {k} des utilisateurs qui reviennent le + souvent : \n")
     for i in range(k) :
-        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.") ## On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+        print(f"- {i+1}) {top[i][0]} avec {top[i][1]} publications.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+
 
 '''
 
@@ -275,113 +332,75 @@ topk_users(k)
 
 '''
 
-# Le dictionnaire avec les hashtags, les utilisateurs les regroupe tous avec leur nombres de publication chacun,
-#  alors on a déjà le nombre de publications par hashatgs, utilisateurs.
+# Le dictionnaire avec les hashtags, les utilisateurs regroupe leur nombres
+# de publication chacun,
+# alors on a déjà le nombre de publications par hashatgs, utilisateurs.
 
 # L'ensemble des tweets mentionnant un utilisateur spécifique :
 
 dico_tweets_mentions = {}
-for elt in liste_ment :
-    if elt != [] :
-        for mention in elt :
-            i = liste_ment.index(elt)
-            if mention not in dico_tweets_mentions :
-                dico_tweets_mentions[mention] = []
-                dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
-            else :
-                dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
+
+for elt in liste_ment:
+    for mention in elt:
+        i = liste_ment.index(elt)
+        if mention not in dico_tweets_mentions:
+            dico_tweets_mentions[mention] = []
+            dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
+        else:
+            dico_tweets_mentions[mention].append(donnees[i]['TweetText'])
 
 # L'ensemble des tweets d'un utilisateur spécifique :
 
 dico_tweets_users = {}
 
-for user in liste_autor :
-    i = liste_autor.index(user)
-    if user not in dico_tweets_users :
-            dico_tweets_users[user] = []
-            dico_tweets_users[user].append(donnees[i]['TweetText'])
-    else :
-        dico_tweets_users[user].append(donnees[i]['TweetText'])
+for dict in donnees:
+    if dict["Autor"] not in dico_tweets_users:
+        dico_tweets_users[dict["Autor"]] = []
+        dico_tweets_users[dict["Autor"]].append(dict["TweetText"])
+    else:
+        dico_tweets_users[dict["Autor"]].append(dict["TweetText"])
+
+'''
+
+# Test :
+
+l = []
+for dict in donnees :
+    if dict["Autor"] == "gkUva" :
+        l.append(dict["TweetText"])
+
+print(dico_tweets_users["gkUva"] == l)
+
+'''
 
 # Utilisateurs mentionnant un hashtag spécifique :
 
 dico_hashtag_andUser = {}
 
-for elt in liste_hash :
-    if elt != [] :
-       for hashtag in elt :
-            i = liste_hash.index(elt)
-            if hashtag not in dico_hashtag_andUser :
-                dico_hashtag_andUser[hashtag] = []
+for elt in liste_hash:
+    for hashtag in elt:
+        i = liste_hash.index(elt)
+        if hashtag not in dico_hashtag_andUser:
+            dico_hashtag_andUser[hashtag] = []
+            dico_hashtag_andUser[hashtag].append(donnees[i]["Autor"])
+        else:
+            if donnees[i]["Autor"] not in dico_hashtag_andUser[hashtag] :
                 dico_hashtag_andUser[hashtag].append(donnees[i]["Autor"])
-            else :
-                if donnees[i]["Autor"] not in dico_hashtag_andUser[hashtag] :
-                   dico_hashtag_andUser[hashtag].append(donnees[i]["Autor"])
 
 
 # Utilisateurs mentionnés par un utilisateur spécifique :
 
 dico_users_andMent = {}
 
-for elt in liste_ment :
-    for mentions in elt :
-        i = liste_ment.index(elt)
-        if mentions not in dico_users_andMent[donnees[i]["Autor"]] :
-            dico_users_andMent[donnees[i]["Autor"]] = []
-            dico_users_andMent[donnees[i]["Autor"]].append(mentions)
-        else :
-            if 
+for autor in creation_autor:  # On parcoure tous les différents auteurs
+        dico_users_andMent[autor] = []  # Pour chacun, on créé une clé dans le dict avec comme valeur, une liste vide
+        for elt in liste_autor:  # On parcoure la liste des auteurs selon les publications
+            if elt == autor:  # Si l'user correspond à celui qu'on est en train de traiter
+                i = liste_autor.index(elt)  # On prend son indice dans la liste(car elle correspond à l'indice de la ligne où on trouvera les mentions de cette ligne même)
+                for mentions in liste_ment[i]:  # On parcoure toutes les mentions de cette ligne
+                    if dico_users_andMent[autor] == []:  # Si la liste des mentions de cet auteur est vide
 
-
-## Création de notre liste des différents auteurs :
-
-'''
-
-creation_autor =[]
-l_temp = []
-l_temp.append(list_maj)
-l_temp.append(list_min)
-
-
-for i in range(200) :
-    j = rd.randint(4,11)
-    temp = ""
-    for k in range(j) :
-        t = rd.choice(l_temp)
-        c = rd.choice(t)
-        temp += c
-    creation_autor.append(temp)
-
-'''
-## Résultat de notre code au-dessus :
-
-creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc', 'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP', 
-                  'KQDaMDU', 'UrxlM', 'LsiMhk', 'xGvBpvfX', 'BBXyUra', 'qWI_CZdxcQ', 'UdgIO-AhaZ', 'ifbCjF', 'Eg_spzD', 'vaoDg', 'SNUvK', 'FtMxILoSV', '-EAMxOYM', '-gEakGDX_', 
-                  'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr', 'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio', 'GAhiPQW', 
-                  'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ', 'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx', 'BmXxVLNW', 'dqCXuk', 'gQ-T', 
-                  'ImYR', 'EWktbLHU', 'ydCeh', 'TbvL', 'jOhEZIg', 'lKTDRNKrUHh', 'BvvArd', 'sMZMytB', 'l-JqIY', 'mLZfvZRxT', 'slcbkwTtRYx', 'aOmVMx', 'JEkx', 'alKpczQ', 'roPNPOu', 
-                  'Ic-BCXOh', 'zInV', 'EcSYgj', 'Tt_m', 'tMMJXl', 'eFwuGW', 'eLbQFGR', 'vwTZ_FjbnN', 'owNOfEJsS', 'fvVXS', 'ZTvXRBpyb_', 'PbDDtxkShP', 'q_PdBNV', 'W-cka', 'xXgYOdcim', 
-                  'kbZSvWx', 'Qpwlh', 'ZVl_BJDHIW', 'kxgqyeDSPH', 'EjvTiaovQq', 'eGZv', 'vfgIl', 'XGpvCL_JKi', 'SVIS', 'wpvV-yaqd', 'DVMyGe', 'ViQrZQddkV', 'cmeuEJxPuN', 'CJfJGNkO', 
-                  'oS_gSU_-', 'ROAxw', 'sVHKHo', 'lskVug', 'yrHmcdeEqd', 'LBNksKv', '-JlyHvyZR', 'BHaUEm_nYaZ', 'sCgudeDyx', 'f-BDzNxq', 'HLI_IM', 'uVVPE', 'DHjRxj', 'nj-x-YO', 
-                  'YJdOld', 'FDKC', 'CeDR_KRa_n', 'E-RymAXdG', 'HcAhcJIyTZ', 'cOFPMmRMUOV', 'gkUva', 'yKqKL', 'CIqCKbyaKZD', 'kBGv', 'ENDNX', 'NEnXLWFTAy', 'sHirz-qB', 'yWHHaOi', 
-                  'hHUhxwlFTl', 'FnqN', 'OgtVXXjG', 'BUSdoVDqE', '-eVC', 'fpBStDcvV', 'HgFO', 'GIVwz', 'mBBnCVrRCf', 'JQXeThDiX', 'dDYAIXg-HX', 'rEHUe', 'ClN-FiOMW', 'ysrxvPWcn', 
-                  'UYBA', 'UXdM', 'aKtalHEVBpa', 'ZOTPWCt', 'YFWt', 'hoFYHGv', 'cZbXxiMSIhh', 'kFVWu_yrv', 'IHzXR', 'aRfxi', 'E-pI', 'rSVEXP', 'MyTrInLrbRe', 'rEWzWyhhuK', 
-                  'Asp-rtjyYC', 'tRJCQUMu', 'frWeeerEaM', 'FAcQwf', 'nGxkX', 'eDQFdAbFgcN', 'WA_qIaoRW', 'MyxKrj-Y', 'XVtO', 'wVplcKaZR', 'SJZbkiqQVd', 'TqMUdFJFQ', 'WBwWrlp', 
-                  'XBrdhy_M', 'QENk', 'HGil', 'cDLutGaEjeg', 'LVAdh', 'LUVVicKQ', 'GWyUX', 'haIen', 'nhrLpLGwG', 'stGisQXTgo_', 'PLELwexzOo', 'vANIN', 'dZFDq', 'TIKxWN', 'yKgyqpf', 
-                  'AWdnrz', 'nwpno', 'RrOx', 'qQiS', 'jf_MJHUKPLE', 'ebK-Wus', 'wApb', 'mB-QpawgcHH', 'uEeqD_GbEcT', 'bfcHeMMr', 'omAjKQ', 'ytYIFh', 'qvLIZfO', 'niicEgxDTo', 
-                  'eeDMgzLP','rych']
-
-
-## Ajout des auteurs à chaque dictionnaire d'un tweet et ajout dans le fichier json d'une clé "Autor" avec comme valeur l'auteur attribué :
-
-'''
-
-for dic in donnees :
-    autor_temp = rd.choice(creation_autor)
-    dic["Autor"] = autor_temp
-
-with open("aitweets.json","w") as fjson :
-    json.dump(donnees,fjson)
-
-
-'''
+                        dico_users_andMent[autor].append(mentions)  # On ajoute la mention à la liste
+                    else:
+                        if mentions not in dico_users_andMent[autor]:  # Sinon si la liste des mentions de l'auteur est pas vide et la mention traitée ici n'est pas dans la liste
+                            dico_users_andMent[autor].append(mentions)  # On ajoute à la liste, la mention
