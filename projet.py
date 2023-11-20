@@ -7,7 +7,8 @@ with open("aitweets.json", 'r', encoding='utf-8') as file_json:
     donnees = json.load(file_json)
 
 
-# Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
+# Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère
+# non-alphanumérique
 
 lang_not_ascii = ["und", "fa", "ja", "ar", "ko"]
 
@@ -43,10 +44,15 @@ for i in range(200) :
 '''
 # Résultat de notre code au-dessus :
 
-creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc', 'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP', 
-                  'KQDaMDU', 'UrxlM', 'LsiMhk', 'xGvBpvfX', 'BBXyUra', 'qWI_CZdxcQ', 'UdgIO-AhaZ', 'ifbCjF', 'Eg_spzD', 'vaoDg', 'SNUvK', 'FtMxILoSV', '-EAMxOYM', '-gEakGDX_', 
-                  'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr', 'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio', 'GAhiPQW', 
-                  'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ', 'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx', 'BmXxVLNW', 'dqCXuk', 'gQ-T', 
+creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc',
+                  'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP',
+                  'KQDaMDU', 'UrxlM', 'LsiMhk', 'xGvBpvfX', 'BBXyUra', 'qWI_CZdxcQ', 'UdgIO-AhaZ',
+                  'ifbCjF', 'Eg_spzD', 'vaoDg', 'SNUvK', 'FtMxILoSV', '-EAMxOYM', '-gEakGDX_',
+                  'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr',
+                  'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio',
+                  'GAhiPQW', 'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ',
+                  'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx',
+                  'BmXxVLNW', 'dqCXuk', 'gQ-T', 
                   'ImYR', 'EWktbLHU', 'ydCeh', 'TbvL', 'jOhEZIg', 'lKTDRNKrUHh', 'BvvArd', 'sMZMytB', 'l-JqIY', 'mLZfvZRxT', 'slcbkwTtRYx', 'aOmVMx', 'JEkx', 'alKpczQ', 'roPNPOu', 
                   'Ic-BCXOh', 'zInV', 'EcSYgj', 'Tt_m', 'tMMJXl', 'eFwuGW', 'eLbQFGR', 'vwTZ_FjbnN', 'owNOfEJsS', 'fvVXS', 'ZTvXRBpyb_', 'PbDDtxkShP', 'q_PdBNV', 'W-cka', 'xXgYOdcim', 
                   'kbZSvWx', 'Qpwlh', 'ZVl_BJDHIW', 'kxgqyeDSPH', 'EjvTiaovQq', 'eGZv', 'vfgIl', 'XGpvCL_JKi', 'SVIS', 'wpvV-yaqd', 'DVMyGe', 'ViQrZQddkV', 'cmeuEJxPuN', 'CJfJGNkO', 
@@ -60,7 +66,8 @@ creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 't
                   'eeDMgzLP','rych']
 
 
-# Ajout des auteurs à chaque dictionnaire d'un tweet et ajout dans le fichier json d'une clé "Autor" avec comme valeur l'auteur attribué :
+# Ajout des auteurs à chaque dictionnaire d'un tweet et ajout dans le fichier json d'une clé "Autor"
+#  avec comme valeur l'auteur attribué :
 
 '''
 
