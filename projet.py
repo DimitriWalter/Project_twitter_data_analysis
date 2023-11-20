@@ -44,14 +44,10 @@ for i in range(200) :
 '''
 # Résultat de notre code au-dessus :
 
-creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc',
-                  'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP',
-                  'KQDaMDU', 'UrxlM', 'LsiMhk', 'xGvBpvfX', 'BBXyUra', 'qWI_CZdxcQ', 'UdgIO-AhaZ',
-                  'ifbCjF', 'Eg_spzD', 'vaoDg', 'SNUvK', 'FtMxILoSV', '-EAMxOYM', '-gEakGDX_',
-                  'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr',
-                  'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio',
-                  'GAhiPQW', 'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ',
-                  'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx', 'BmXxVLNW', 'dqCXuk', 'gQ-T',
+creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc', 'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP',
+                  'KQDaMDU', 'UrxlM', 'LsiMhk', 'xGvBpvfX', 'BBXyUra', 'qWI_CZdxcQ', 'UdgIO-AhaZ', 'ifbCjF', 'Eg_spzD', 'vaoDg', 'SNUvK', 'FtMxILoSV', '-EAMxOYM', '-gEakGDX_',
+                  'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr', 'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio',
+                  'GAhiPQW', 'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ', 'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx', 'BmXxVLNW', 'dqCXuk', 'gQ-T',
                   'ImYR', 'EWktbLHU', 'ydCeh', 'TbvL', 'jOhEZIg', 'lKTDRNKrUHh', 'BvvArd', 'sMZMytB', 'l-JqIY', 'mLZfvZRxT', 'slcbkwTtRYx', 'aOmVMx', 'JEkx', 'alKpczQ', 'roPNPOu',
                   'Ic-BCXOh', 'zInV', 'EcSYgj', 'Tt_m', 'tMMJXl', 'eFwuGW', 'eLbQFGR', 'vwTZ_FjbnN', 'owNOfEJsS', 'fvVXS', 'ZTvXRBpyb_', 'PbDDtxkShP', 'q_PdBNV', 'W-cka', 'xXgYOdcim',
                   'kbZSvWx', 'Qpwlh', 'ZVl_BJDHIW', 'kxgqyeDSPH', 'EjvTiaovQq', 'eGZv', 'vfgIl', 'XGpvCL_JKi', 'SVIS', 'wpvV-yaqd', 'DVMyGe', 'ViQrZQddkV', 'cmeuEJxPuN', 'CJfJGNkO',
@@ -59,7 +55,8 @@ creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 't
                   'YJdOld', 'FDKC', 'CeDR_KRa_n', 'E-RymAXdG', 'HcAhcJIyTZ', 'cOFPMmRMUOV', 'gkUva', 'yKqKL', 'CIqCKbyaKZD', 'kBGv', 'ENDNX', 'NEnXLWFTAy', 'sHirz-qB', 'yWHHaOi',
                   'hHUhxwlFTl', 'FnqN', 'OgtVXXjG', 'BUSdoVDqE', '-eVC', 'fpBStDcvV', 'HgFO', 'GIVwz', 'mBBnCVrRCf', 'JQXeThDiX', 'dDYAIXg-HX', 'rEHUe', 'ClN-FiOMW', 'ysrxvPWcn',
                   'UYBA', 'UXdM', 'aKtalHEVBpa', 'ZOTPWCt', 'YFWt', 'hoFYHGv', 'cZbXxiMSIhh', 'kFVWu_yrv', 'IHzXR', 'aRfxi', 'E-pI', 'rSVEXP', 'MyTrInLrbRe', 'rEWzWyhhuK',
-                  'Asp-rtjyYC', 'tRJCQUMu', 'frWeeerEaM', 'FAcQwf', 'nGxkX', 'eDQFdAbFgcN', 'WA_qIaoRW', 'MyxKrj-Y', 'XVtO', 'wVplcKaZR', 'SJZbkiqQVd', 'TqMUdFJFQ', 'WBwWrlp',                  'XBrdhy_M', 'QENk', 'HGil', 'cDLutGaEjeg', 'LVAdh', 'LUVVicKQ', 'GWyUX', 'haIen', 'nhrLpLGwG', 'stGisQXTgo_', 'PLELwexzOo', 'vANIN', 'dZFDq', 'TIKxWN', 'yKgyqpf', 
+                  'Asp-rtjyYC', 'tRJCQUMu', 'frWeeerEaM', 'FAcQwf', 'nGxkX', 'eDQFdAbFgcN', 'WA_qIaoRW', 'MyxKrj-Y', 'XVtO', 'wVplcKaZR', 'SJZbkiqQVd', 'TqMUdFJFQ', 'WBwWrlp',
+                  'XBrdhy_M', 'QENk', 'HGil', 'cDLutGaEjeg', 'LVAdh', 'LUVVicKQ', 'GWyUX', 'haIen', 'nhrLpLGwG', 'stGisQXTgo_', 'PLELwexzOo', 'vANIN', 'dZFDq', 'TIKxWN', 'yKgyqpf',
                   'AWdnrz', 'nwpno', 'RrOx', 'qQiS', 'jf_MJHUKPLE', 'ebK-Wus', 'wApb', 'mB-QpawgcHH', 'uEeqD_GbEcT', 'bfcHeMMr', 'omAjKQ', 'ytYIFh', 'qvLIZfO', 'niicEgxDTo',
                   'eeDMgzLP', 'rych']
 
