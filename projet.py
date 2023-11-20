@@ -7,14 +7,13 @@ with open("aitweets.json", 'r', encoding='utf-8') as file_json:
     donnees = json.load(file_json)
 
 
-# Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère
-# non-alphanumérique
+# Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
 
 lang_not_ascii = ["und", "fa", "ja", "ar", "ko"]
 
 list_nb = [str(i) for i in range(0, 10)]
-list_maj = [chr(i) for i in range(65, 91)]
-list_min = [chr(i) for i in range(97, 123)] + ["-", "_"]
+list_min = [chr(i) for i in range(65, 91)]
+list_maj = [chr(i) for i in range(97, 123)] + ["-", "_"]
 
 # Stockage dans zone d'atterissage :
 
