@@ -51,23 +51,21 @@ creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 't
                   'nguYCjiuu', 'vOAnZd', 'CVhDukeJyD', 'HbAVnjQ', 'RUMDk', 'rrGisAeWr',
                   'RkxSl-p_MTl', 'bFtt', 'xKVk', 'MaeDgycAi', 'jdoPV', 'InXuiS', 'fLtRgcspWio',
                   'GAhiPQW', 'nLNs_OR', 'Andze', 'bIgt', 'IoIy', 'XKEuj', 'AkUMCgGZ',
-                  'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx',
-                  'BmXxVLNW', 'dqCXuk', 'gQ-T', 
-                  'ImYR', 'EWktbLHU', 'ydCeh', 'TbvL', 'jOhEZIg', 'lKTDRNKrUHh', 'BvvArd', 'sMZMytB', 'l-JqIY', 'mLZfvZRxT', 'slcbkwTtRYx', 'aOmVMx', 'JEkx', 'alKpczQ', 'roPNPOu', 
-                  'Ic-BCXOh', 'zInV', 'EcSYgj', 'Tt_m', 'tMMJXl', 'eFwuGW', 'eLbQFGR', 'vwTZ_FjbnN', 'owNOfEJsS', 'fvVXS', 'ZTvXRBpyb_', 'PbDDtxkShP', 'q_PdBNV', 'W-cka', 'xXgYOdcim', 
-                  'kbZSvWx', 'Qpwlh', 'ZVl_BJDHIW', 'kxgqyeDSPH', 'EjvTiaovQq', 'eGZv', 'vfgIl', 'XGpvCL_JKi', 'SVIS', 'wpvV-yaqd', 'DVMyGe', 'ViQrZQddkV', 'cmeuEJxPuN', 'CJfJGNkO', 
-                  'oS_gSU_-', 'ROAxw', 'sVHKHo', 'lskVug', 'yrHmcdeEqd', 'LBNksKv', '-JlyHvyZR', 'BHaUEm_nYaZ', 'sCgudeDyx', 'f-BDzNxq', 'HLI_IM', 'uVVPE', 'DHjRxj', 'nj-x-YO', 
-                  'YJdOld', 'FDKC', 'CeDR_KRa_n', 'E-RymAXdG', 'HcAhcJIyTZ', 'cOFPMmRMUOV', 'gkUva', 'yKqKL', 'CIqCKbyaKZD', 'kBGv', 'ENDNX', 'NEnXLWFTAy', 'sHirz-qB', 'yWHHaOi', 
-                  'hHUhxwlFTl', 'FnqN', 'OgtVXXjG', 'BUSdoVDqE', '-eVC', 'fpBStDcvV', 'HgFO', 'GIVwz', 'mBBnCVrRCf', 'JQXeThDiX', 'dDYAIXg-HX', 'rEHUe', 'ClN-FiOMW', 'ysrxvPWcn', 
-                  'UYBA', 'UXdM', 'aKtalHEVBpa', 'ZOTPWCt', 'YFWt', 'hoFYHGv', 'cZbXxiMSIhh', 'kFVWu_yrv', 'IHzXR', 'aRfxi', 'E-pI', 'rSVEXP', 'MyTrInLrbRe', 'rEWzWyhhuK', 
-                  'Asp-rtjyYC', 'tRJCQUMu', 'frWeeerEaM', 'FAcQwf', 'nGxkX', 'eDQFdAbFgcN', 'WA_qIaoRW', 'MyxKrj-Y', 'XVtO', 'wVplcKaZR', 'SJZbkiqQVd', 'TqMUdFJFQ', 'WBwWrlp', 
-                  'XBrdhy_M', 'QENk', 'HGil', 'cDLutGaEjeg', 'LVAdh', 'LUVVicKQ', 'GWyUX', 'haIen', 'nhrLpLGwG', 'stGisQXTgo_', 'PLELwexzOo', 'vANIN', 'dZFDq', 'TIKxWN', 'yKgyqpf', 
-                  'AWdnrz', 'nwpno', 'RrOx', 'qQiS', 'jf_MJHUKPLE', 'ebK-Wus', 'wApb', 'mB-QpawgcHH', 'uEeqD_GbEcT', 'bfcHeMMr', 'omAjKQ', 'ytYIFh', 'qvLIZfO', 'niicEgxDTo', 
-                  'eeDMgzLP','rych']
+                  'kA-kUsolJJQ', 'ttdkvVdZ', 'dxWRRDmAbma', 't-SlYwRap', 'KxAbMB', 'sgDQx', 'BmXxVLNW', 'dqCXuk', 'gQ-T',
+                  'ImYR', 'EWktbLHU', 'ydCeh', 'TbvL', 'jOhEZIg', 'lKTDRNKrUHh', 'BvvArd', 'sMZMytB', 'l-JqIY', 'mLZfvZRxT', 'slcbkwTtRYx', 'aOmVMx', 'JEkx', 'alKpczQ', 'roPNPOu',
+                  'Ic-BCXOh', 'zInV', 'EcSYgj', 'Tt_m', 'tMMJXl', 'eFwuGW', 'eLbQFGR', 'vwTZ_FjbnN', 'owNOfEJsS', 'fvVXS', 'ZTvXRBpyb_', 'PbDDtxkShP', 'q_PdBNV', 'W-cka', 'xXgYOdcim',
+                  'kbZSvWx', 'Qpwlh', 'ZVl_BJDHIW', 'kxgqyeDSPH', 'EjvTiaovQq', 'eGZv', 'vfgIl', 'XGpvCL_JKi', 'SVIS', 'wpvV-yaqd', 'DVMyGe', 'ViQrZQddkV', 'cmeuEJxPuN', 'CJfJGNkO',
+                  'oS_gSU_-', 'ROAxw', 'sVHKHo', 'lskVug', 'yrHmcdeEqd', 'LBNksKv', '-JlyHvyZR', 'BHaUEm_nYaZ', 'sCgudeDyx', 'f-BDzNxq', 'HLI_IM', 'uVVPE', 'DHjRxj', 'nj-x-YO',
+                  'YJdOld', 'FDKC', 'CeDR_KRa_n', 'E-RymAXdG', 'HcAhcJIyTZ', 'cOFPMmRMUOV', 'gkUva', 'yKqKL', 'CIqCKbyaKZD', 'kBGv', 'ENDNX', 'NEnXLWFTAy', 'sHirz-qB', 'yWHHaOi',
+                  'hHUhxwlFTl', 'FnqN', 'OgtVXXjG', 'BUSdoVDqE', '-eVC', 'fpBStDcvV', 'HgFO', 'GIVwz', 'mBBnCVrRCf', 'JQXeThDiX', 'dDYAIXg-HX', 'rEHUe', 'ClN-FiOMW', 'ysrxvPWcn',
+                  'UYBA', 'UXdM', 'aKtalHEVBpa', 'ZOTPWCt', 'YFWt', 'hoFYHGv', 'cZbXxiMSIhh', 'kFVWu_yrv', 'IHzXR', 'aRfxi', 'E-pI', 'rSVEXP', 'MyTrInLrbRe', 'rEWzWyhhuK',
+                  'Asp-rtjyYC', 'tRJCQUMu', 'frWeeerEaM', 'FAcQwf', 'nGxkX', 'eDQFdAbFgcN', 'WA_qIaoRW', 'MyxKrj-Y', 'XVtO', 'wVplcKaZR', 'SJZbkiqQVd', 'TqMUdFJFQ', 'WBwWrlp',                  'XBrdhy_M', 'QENk', 'HGil', 'cDLutGaEjeg', 'LVAdh', 'LUVVicKQ', 'GWyUX', 'haIen', 'nhrLpLGwG', 'stGisQXTgo_', 'PLELwexzOo', 'vANIN', 'dZFDq', 'TIKxWN', 'yKgyqpf', 
+                  'AWdnrz', 'nwpno', 'RrOx', 'qQiS', 'jf_MJHUKPLE', 'ebK-Wus', 'wApb', 'mB-QpawgcHH', 'uEeqD_GbEcT', 'bfcHeMMr', 'omAjKQ', 'ytYIFh', 'qvLIZfO', 'niicEgxDTo',
+                  'eeDMgzLP', 'rych']
 
 
 # Ajout des auteurs à chaque dictionnaire d'un tweet et ajout dans le fichier json d'une clé "Autor"
-#  avec comme valeur l'auteur attribué :
+#  avec comme valeur l'auteur attribué:
 
 '''
 
@@ -81,7 +79,7 @@ with open("aitweets.json","w") as fjson :
 
 '''
 
-# Opérations de traitements : 
+# Opérations de traitements :
 
 # Identification de l'auteur :
 
@@ -97,7 +95,7 @@ def liste_hashtags(dict):  # on prend notre liste de data en argument avec la li
     tweet = dict['TweetText']
     liste_h = []  # On initialise la liste qui va contenier les différents hashtags ou pas
     temp = 0  # Initialisation d'une variable temporaire qu'on utilisera pour traiter les hashtags
-    
+
     if dict["TweetLanguage"] in lang_not_ascii:  # Si les caractères de la langue ne sont pas dans le code ASCII, alors je vais traiter différemment
         if "#" in tweet:
             split = tweet.split()
@@ -110,31 +108,31 @@ def liste_hashtags(dict):  # on prend notre liste de data en argument avec la li
         if "#" in tweet:  # Tout d'abord, on vérifie la présence d'hashtags dans la publication
             split = tweet.split()  # Si il y en a, alors on utilise .split() pour séparer les mots du tweet
             for elmnt in split:  # On parcoure tous les mots du tweet
-                
+
                 if "#" in elmnt and elmnt[0] == "#":  # 1er cas, si il y a un # dans le mot, c'est un des hashtag du tweet et on va traiter les hashtags précédés d'aucun caractère avant donc il commence par "#"
                     for c in elmnt[1:]:  # On parcoure la chaîne de caractère du hashtag
-                        if (c not in list_min and c not in list_maj and c not in list_nb):  # On teste si le caractère est un chiffre ou une lettre (miniscule ou majuscule) 
+                        if (c not in list_min and c not in list_maj and c not in list_nb):  # On teste si le caractère est un chiffre ou une lettre (miniscule ou majuscule)
                             temp = 1  # variable temporaire à 1 si un caractère remplit les conditions
-                            hash = elmnt.split(c)     ## On sépare notre mot avec split() et comme argument le caractère spécial en question pour l'enlever du hashtag
+                            hash = elmnt.split(c)  # On sépare notre mot avec split() et comme argument le caractère spécial en question pour l'enlever du hashtag
                             break  # Ainsi on stoppe la boucle for quand on l'a trouvé
 
                         else:
                             temp = 0
 
                     if temp == 1 and hash[0] != "#":  # Si temp == 1 alors on est passé dans le if et on a split, la deuxième condition ne prends les hashtags tout seul sans mot après
-                        liste_h.append(hash[0].lower())  # On append donc le 1er élément de la liste (split) car notre hashtag n'est précédé par d'autres caractères (car le split se fera au premier chr spécial qui arrivera apres le hashtag) 
+                        liste_h.append(hash[0].lower())  # On append donc le 1er élément de la liste (split) car notre hashtag n'est précédé par d'autres caractères (car le split se fera au premier chr spécial qui arrivera apres le hashtag)
                     if temp != 1 and elmnt != "#…":  # Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
                         liste_h.append(elmnt.lower())  # On l'append (à noter qu'on utilise lower() pour que les hashtags soit tous en miniscules et qu'on puisse les comparer facilement)
-                    
+
                 elif "#" in elmnt and elmnt[0] != "#":  # Deuxième cas, si le mot contient un "#" mais qu'il ne commence pas par ce dernier donc par un caractère spe tel que , ou par une parenthèse etc
                     for c in elmnt:  # On parcoure chaque caractère du mot
                         if c == "#":  # On teste si le caractère correspond au hashtag
                             i = elmnt.index(c)  # Si oui, alors je prends son indice dans le mot avec index()
                             hash2 = elmnt.split(elmnt[i-1])  # Et je split au caractère juste avant pour le séparer du hashtag
-                            break  # Je stoppe ma boucle si je l'ai trouvé 
+                            break  # Je stoppe ma boucle si je l'ai trouvé
                     for h in hash2:  # Ensuite je parcoure ma liste split pour faire comme dans le 1er cas càd dans spliter si le hashtag est suivi d'un caractère spécial que je ne veux pas
                         if "#" in h:  # On teste si l'élément dans ma liste corresponds au hashtag
-                            for c in h:  # Si oui alors je parcours chaque caractère du mot 
+                            for c in h:  # Si oui alors je parcours chaque caractère du mot
                                 if c not in list_min and c not in list_maj and c not in list_nb and c != "#":  # Le if ici est pour savoir si le hashtag est suivi d'un caractère spécial, et on vérifie que ce caractère n'est pas un hashtag
                                     temp = 2  # Si oui, variable temp à 2
                                     hash_final = h.split(c)  # Et je split au caractère spécial
@@ -142,7 +140,7 @@ def liste_hashtags(dict):  # on prend notre liste de data en argument avec la li
                                 else:
                                     temp = 0
                             if temp == 2:  # Si temp == 2 , alors je suis rentré dans le if
-                                liste_h.append(hash_final[0].lower()) ## On append donc le 1er élément du split car notre hashtag n'est précédé par d'autres caractères donc le split se fera au premier chr spécial qui arrivera apres le hashtag
+                                liste_h.append(hash_final[0].lower())  # On append donc le 1er élément du split car notre hashtag n'est précédé par d'autres caractères donc le split se fera au premier chr spécial qui arrivera apres le hashtag
                             if temp != 2:  # Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
                                 liste_h.append(h.lower())  # On l'append normalement
 
@@ -152,7 +150,7 @@ def liste_hashtags(dict):  # on prend notre liste de data en argument avec la li
 # Extraire la liste des mentions de la publication :
 
 
-def liste_mentions(dict) :
+def liste_mentions(dict):
     tweet = dict['TweetText']
     liste_m = []
     temp = 0
@@ -169,8 +167,8 @@ def liste_mentions(dict) :
         if "@" in tweet:
             split = tweet.split()
             for elmnt in split:
-                
-                if "@" in elmnt and elmnt[0] == "@": 
+
+                if "@" in elmnt and elmnt[0] == "@":
                     for c in elmnt[1:]:
                         if (c not in list_min and c not in list_maj and c not in list_nb):
                             temp = 1
@@ -208,7 +206,7 @@ def liste_mentions(dict) :
     return liste_m
 
 
-## Analyser le sentiment du tweet :
+# Analyser le sentiment du tweet :
 
 
 def analys_feeling(tweet):
