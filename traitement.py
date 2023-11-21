@@ -6,6 +6,7 @@ import numpy as np
 with open("zone_d'atterissage.json", 'r', encoding='utf-8') as file_json:
     data = json.load(file_json)
 
+
 # Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
 
 lang_not_ascii = ["und", "fa", "ja", "ar", "ko"]
