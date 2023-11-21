@@ -3,7 +3,7 @@ from textblob import TextBlob
 import pandas as pd
 import numpy as np
 
-with open("zone-d'atterissage.json", 'r', encoding='utf-8') as file_json:
+with open("zone_d'atterissage.json", 'r', encoding='utf-8') as file_json:
     data = json.load(file_json)
 
 # Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
