@@ -57,7 +57,7 @@ def liste_hashtags(dict):  # on prend notre liste de data en argument avec la li
 
                     if temp == 1 and hash[0] != "#":  # Si temp == 1 alors on est passé dans le if et on a split, la deuxième condition ne prends les hashtags tout seul sans mot après
                         liste_h.append(hash[0].lower())  # On append donc le 1er élément de la liste (split) car notre hashtag n'est précédé par d'autres caractères (car le split se fera au premier chr spécial qui arrivera apres le hashtag)
-                    if temp != 1 and elmnt != "#…":  # Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
+                    if temp != 1 and elmnt != "#":  # Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
                         liste_h.append(elmnt.lower())  # On l'append (à noter qu'on utilise lower() pour que les hashtags soit tous en miniscules et qu'on puisse les comparer facilement)
 
                 elif "#" in elmnt and elmnt[0] != "#":  # Deuxième cas, si le mot contient un "#" mais qu'il ne commence pas par ce dernier donc par un caractère spe tel que , ou par une parenthèse etc
@@ -75,9 +75,9 @@ def liste_hashtags(dict):  # on prend notre liste de data en argument avec la li
                                     break  # Je stoppe une fois le caractère trouvé
                                 else:
                                     temp = 0
-                            if temp == 2:  # Si temp == 2 , alors je suis rentré dans le if
+                            if temp == 2 and hash_final[0] != "#":  # Si temp == 2 , alors je suis rentré dans le if
                                 liste_h.append(hash_final[0].lower())  # On append donc le 1er élément du split car notre hashtag n'est précédé par d'autres caractères donc le split se fera au premier chr spécial qui arrivera apres le hashtag
-                            if temp != 2:  # Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
+                            if temp != 2 and h != "#":  # Sinon, je ne suis pas rentrer dans la liste càd pas de caractère spécial dans le mot contenant le hashtag
                                 liste_h.append(h.lower())  # On l'append normalement
 
     return liste_h
@@ -115,7 +115,7 @@ def liste_mentions(dict):
 
                     if temp == 1 and mention[0] != "@":
                         liste_m.append(mention[0])
-                    if temp != 1 and elmnt != "@…":
+                    if temp != 1 and elmnt != "@":
                         liste_m.append(elmnt)
 
                 elif "@" in elmnt and elmnt[0] != "@":

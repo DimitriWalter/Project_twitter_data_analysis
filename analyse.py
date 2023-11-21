@@ -18,7 +18,6 @@ for elt in td.liste_hash:  # On parcoure notre liste contenant tous les hastags 
 
 dicK_hashtags = dict(sorted(dicK_hashtags.items(), key=lambda item: item[1], reverse=True))  # Trier le dictionnaire avec les hashtags par ordre décroissant
 
-
 def topK_hashtags():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des hashtags : "))
     top = list(dicK_hashtags.items())  # On créé une liste contenant les items du dictionnaire
