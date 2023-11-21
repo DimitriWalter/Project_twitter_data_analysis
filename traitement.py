@@ -194,13 +194,13 @@ for tweet in data:
     sentiment.append(analys_feeling(tweet["TweetText"]))
 
 
-dataFrame_traitement = pd.DataFrame(columns=["Autor", "Hashtags", "Mentions", "Sentiment"],
+df = pd.DataFrame(columns=["Autor", "Hashtags", "Mentions", "Sentiment"],
                                     index=[np.arange(1, len(data)+1)])
 
-print(dataFrame_traitement.shape)
+print(df.shape)
 
-for i in range(0, dataFrame_traitement.shape[0]):
-    dataFrame_traitement.iloc[i]["Autor"] = liste_autor[i]
+for i in range(0, df.shape[0]):
+    df.iloc[i]["Autor"] = liste_autor[i]
     if liste_hash[i] != []:
         temp = ""
         for elt in liste_hash[i]:
@@ -209,7 +209,7 @@ for i in range(0, dataFrame_traitement.shape[0]):
             else:
                 temp += elt + ", "
 
-        dataFrame_traitement.iloc[i]["Hashtags"] = temp
+        df.iloc[i]["Hashtags"] = temp
     if liste_ment[i] != []:
         temp = ""
         for elt in liste_ment[i]:
@@ -218,7 +218,5 @@ for i in range(0, dataFrame_traitement.shape[0]):
             else:
                 temp += elt + ", "
 
-        dataFrame_traitement.iloc[i]["Mentions"] = temp
-    dataFrame_traitement.iloc[i]["Sentiment"] = sentiment[i]
-
-print(dataFrame_traitement)
+        df.iloc[i]["Mentions"] = temp
+    df.iloc[i]["Sentiment"] = sentiment[i]
