@@ -32,7 +32,7 @@ with open("zone_d'atterissage.json", "w",encoding='utf-8') as zone_att:
     data = jeu_tweets
     for tweet in data:
         tweet = zone_atterissage(tweet)
-    json.dump(data, zone_att)
+    json.dump(data, zone_att,indent=2)
 
 '''
 
