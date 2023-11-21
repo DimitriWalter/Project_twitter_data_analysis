@@ -17,11 +17,17 @@ list_maj = [chr(i) for i in range(97, 123)] + ["-", "_"]
 
 # Stockage dans zone d'atterissage :
 
+
+def zone_atterissage(dict):
+    pass
+
+
 with open("zone_d'atterissage.json", "w") as zone_att:
     pass
 
 
 # Création de notre liste des différents auteurs :
+
 
 '''
 
@@ -41,6 +47,7 @@ for i in range(200) :
     creation_autor.append(temp)
 
 '''
+
 # Résultat de notre code au-dessus :
 
 creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 'td_uXWCZVc', 'nCNYrE', 'cwOnU', 'OoqE-Jn', 'RDuj', 'RNOmpKu_lW', 'EVwnLaUO', 'jbBheKHP',
@@ -69,7 +76,7 @@ for dic in donnees :
     autor_temp = rd.choice(creation_autor)
     dic["Autor"] = autor_temp
 
-with open("aitweets.json","w") as fjson :
+with open("aitweets.json","w",encoding='utf-8') as fjson :
     json.dump(donnees,fjson)
 
 
