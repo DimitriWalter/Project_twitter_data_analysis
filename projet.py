@@ -1,10 +1,10 @@
 import random as rd # noqa
 import json
 from textblob import TextBlob
-import re # noqas
+import re
 
 with open("aitweets.json", 'r', encoding='utf-8') as file_json:
-    donnees = json.load(file_json)
+    jeu_tweets = json.load(file_json)
 
 
 # Listes des lettres maj et min et les chiffres, qu'on utilisera pour détecter un caractère non-alphanumérique
@@ -19,11 +19,26 @@ list_maj = [chr(i) for i in range(97, 123)] + ["-", "_"]
 
 
 def zone_atterissage(dict):
-    pass
+    tweet = dict["TweetText"]
+    new_tweet = tweet.replace("\n\n", " ").replace("\n", " ")
+    tweet_nettoye = re.sub(r'[^\w\s.,!?;:()"^`@#/-]', ' ', new_tweet)
+    dict["TweetText"] = tweet_nettoye
+    return dict
 
 
-with open("zone_d'atterissage.json", "w") as zone_att:
-    pass
+'''
+
+with open("zone_d'atterissage.json", "w",encoding='utf-8') as zone_att:
+    data = jeu_tweets
+    for tweet in data:
+        tweet = zone_atterissage(tweet)
+    json.dump(data, zone_att)
+
+'''
+
+
+with open("zone_d'atterissage.json", "r", encoding='utf-8') as fichier:
+    donnees = json.load(fichier)
 
 
 # Création de notre liste des différents auteurs :
@@ -76,11 +91,13 @@ for dic in donnees :
     autor_temp = rd.choice(creation_autor)
     dic["Autor"] = autor_temp
 
+
+
 with open("aitweets.json","w",encoding='utf-8') as fjson :
     json.dump(donnees,fjson)
 
-
 '''
+
 
 # Opérations de traitements :
 
