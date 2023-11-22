@@ -1,6 +1,7 @@
 import json
 import re
 import random as rd
+import traitement as tr
 
 # Création de notre liste des différents auteurs :
 
@@ -84,6 +85,7 @@ def maj_data():
         for tweet in jeu_tweets[len(copy_tweets):]:
             autor_temp = rd.choice(creation_autor)
             tweet["Autor"] = autor_temp
+        tr.maj_topics()
 
     with open("zone_d'atterissage.json", "w", encoding='utf-8') as zone_att:
         data = jeu_tweets

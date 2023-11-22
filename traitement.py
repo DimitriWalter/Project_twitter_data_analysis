@@ -255,12 +255,12 @@ for lang in all_lang:
     if lang == "de":
         all_stopwords["de"] = set(stopwords.words("german"))
 
-for key in all_stopwords.keys():
+for key in all_stopwords.keys():  # ajout des mentions pour ne pas les confondre avec les topics
     for line in liste_ment:
         for m in line:
             if m not in all_stopwords[key]:
                 all_stopwords[key].add(m[1:].lower())
-    all_stopwords[key].add("rt")
+    all_stopwords[key].add("rt")  # ajout de qqles mots qui ne sont pas des topics
     all_stopwords[key].add("https")
     all_stopwords[key].add("read")
     all_stopwords[key].add("via")
@@ -294,36 +294,59 @@ def extract_topics(tweet):
     return liste_t
 
 
-extract = []
-for tweet in data:
-    extract.append(extract_topics(tweet))
+# On fait une fct maj_topics qui s'activera dans collecte data si un tweet est rajouté (voir maj_data), on charge le résultat dans un fichier json la 1ère fois et on le récupère après à chaque fois 
+# sans réexécuter notre code qui prends beaucoup de temps donc le code s'exécutera + vite et il prendra du temps que si un tweet est rajouté :
 
-liste_temp = []
-for ligne in extract:
-    for elt in ligne:
-        if elt not in liste_temp:
-            t = 0
-            for ligne in extract:
-                t += ligne.count(elt)
-            x = (elt, t)
+
+def maj_topics():
+    extract = []
+    for tweet in data:
+        extract.append(extract_topics(tweet))
+    
+    liste_temp = []
+    for ligne in extract:
+        for elt in ligne:
+            if elt not in liste_temp:
+                t = 0
+                for ligne in extract:
+                    t += ligne.count(elt)
+                x = (elt, t)
             liste_temp.append(x)
 
-topics = []
-for elt in set(liste_temp):
-    if elt[1] > 10:
-        topics.append(elt[0])
+    topics = []
+    for elt in set(liste_temp):
+        if elt[1] > 10:
+            topics.append(elt[0])
 
+
+    liste_final = []
+    for tweet in data:
+        tp = []
+        for elt in extract_topics(tweet):
+            if elt in topics:
+                tp.append(elt)
+            liste_final.append(tp)
+
+    with open("topics.json","w") as f:
+        all_topics = []
+        for elt in liste_final:
+            dico = {}
+            dico[liste_final.index(elt)] = elt
+            all_topics.append(dico)
+    
+        json.dump(contenu,f)
+
+
+
+with open("topics.json",'r') as fjson:
+    contenu = json.load(fjson)
 
 liste_topics = []
-for tweet in data:
-    tp = []
-    for elt in extract_topics(tweet):
-        if elt in topics:
-            tp.append(elt)
-    liste_topics.append(tp)
+for top in contenu:
+    liste_topics.append(top[f"{contenu.index(top)}"])
 
 
-df = pd.DataFrame(columns=["Autor", "Hashtags", "Mentions", "Sentiment"],
+df = pd.DataFrame(columns=["Autor", "Hashtags", "Mentions", "Sentiment", "Topics"],
                   index=[np.arange(1, len(data)+1)])
 
 
@@ -347,4 +370,13 @@ for i in range(0, df.shape[0]):
                 temp += elt + ", "
 
         df.iloc[i]["Mentions"] = temp
+    if liste_topics[i] != []:
+        temp = ""
+        for elt in liste_topics[i]:
+            if elt == liste_topics[i][-1]:
+                temp += elt
+            else:
+                temp += elt + ", "
+
+        df.iloc[i]["Topics"] = temp
     df.iloc[i]["Sentiment"] = sentiment[i]
