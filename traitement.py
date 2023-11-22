@@ -3,6 +3,14 @@ from textblob import TextBlob
 import pandas as pd
 import numpy as np
 
+# Modules pour les topics :
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from gensim import models, corpora
+
+
 with open("zone_d'atterissage.json", 'r', encoding='utf-8') as file_json:
     data = json.load(file_json)
 
@@ -17,6 +25,94 @@ list_maj = [chr(i) for i in range(97, 123)] + ["-", "_"]
 
 # Opérations de traitements :
 
+# Extraction des topics :
+
+# Téléchargement des données nécessaires pour le module nltk :
+
+nltk.download('stopwords')
+nltk.download('punkt')
+
+
+all_stopwords = {}  # Dict qui contiendra touts les différents stopwords des différentes langues
+all_lang = []  # Liste qui contiendra toutes les langues des tweets
+
+for tweet in data:
+    if tweet["TweetLanguage"] not in all_lang:
+        all_lang.append(tweet["TweetLanguage"])
+
+'''
+
+all_lang = ['en', 'in', 'es', 'und', 'pt', 'it', 'fr', 'fa', 'ja', 'ca', 'ro', 'da', 'fi', 'ar', 'ko', 'de']
+
+'''
+
+# Création du dict all_stopwords avec tous les stopwords selon les langues :
+
+for lang in all_lang:
+    if lang == "en":
+        all_stopwords["en"] = set(stopwords.words('english'))
+    if lang == "ca":
+        all_stopwords["ca"] = set(stopwords.words('english'))
+    if lang == "ro":
+        all_stopwords["ro"] = set(stopwords.words('english'))
+    if lang == "in":
+        all_stopwords["in"] = set(stopwords.words('indonesian'))
+    if lang == "es":
+        all_stopwords["es"] = set(stopwords.words('spanish'))
+    if lang == "pt":
+        all_stopwords["pt"] = set(stopwords.words('portuguese'))
+    if lang == "it":
+        all_stopwords["it"] = set(stopwords.words('italian'))
+    if lang == "fr":
+        all_stopwords["fr"] = set(stopwords.words('french'))
+    if lang == "da":
+        all_stopwords["da"] = set(stopwords.words("danish"))
+    if lang == "und":
+        all_stopwords["und"] = set(stopwords.words("english"))
+    if lang == "ja":
+        all_stopwords["ja"] = set(stopwords.words("english"))
+    if lang == "fi":
+        all_stopwords["fi"] = set(stopwords.words("finnish"))
+    if lang == "ar":
+        all_stopwords["ar"] = set(stopwords.words("arabic"))
+    if lang == "de":
+        all_stopwords["de"] = set(stopwords.words("german"))
+
+
+# Les stopwords sont des mots couramment utilisés qui sont généralement supprimés dans le traitement
+# du langage naturel car ils ne portent pas une signification importante, ici on les importe dans une liste contenant touts les stopwords dans différentes langues
+
+
+def preprocess_text(text, stop_words):  # fonction de prétraitement de texte en utilisant la bibliothèque NLTK en Python.
+    words = word_tokenize(text)  # divise le texte en mots (tokens) avec la variable la fonction word_tokenize de NLTK
+    words = [word.lower() for word in words if word.isalpha() and word.lower() not in stop_words]  # créer une liste en appliquant les transformations .lower() et .isalpha() (vérifie si le mot est composé uniquement de caractères alphabétiques)
+    return words
+
+
+liste_topics = []
+for tweet in data:
+    if tweet["TweetLanguage"] != "ko" and tweet["TweetLanguage"] != "fa":
+        liste_topics.append(preprocess_text(tweet["TweetText"], all_stopwords[tweet["TweetLanguage"]]))
+    else:
+        liste_topics.append([])
+    break
+
+
+dictionary = corpora.Dictionary(liste_topics)
+corpus = [dictionary.doc2bow(text) for text in liste_topics]
+
+lda_model = models.LdaModel(corpus, num_topics=5, id2word=dictionary, passes=15)
+
+print(lda_model)
+
+topics = lda_model.show_topics(formatted=False)
+
+
+for topic_num, words in topics:
+    print(f"Topic {topic_num + 1}:")
+    print(", ".join(word[0] for word in words))
+    print()
+
 # Identification de l'auteur :
 
 liste_autor = []
@@ -29,7 +125,7 @@ for dic in data:
 
 def liste_hashtags(dict):  # on prend notre liste de data en argument avec la ligne que l'on veut
     tweet = dict['TweetText']
-    liste_h = []  # On initialise la liste qui va contenier les différents hashtags ou pas
+    liste_h = []  # On initialise la liste qui va contenir les différents hashtags ou pas
     temp = 0  # Initialisation d'une variable temporaire qu'on utilisera pour traiter les hashtags
 
     if dict["TweetLanguage"] in lang_not_ascii:  # Si les caractères de la langue ne sont pas dans le code ASCII, alors je vais traiter différemment

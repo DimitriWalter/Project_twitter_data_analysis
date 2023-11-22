@@ -49,7 +49,7 @@ creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 't
 def zone_atterissage(dict):
     tweet = dict["TweetText"]
     new_tweet = tweet.replace("\n\n", " ").replace("\n", " ")
-    tweet_nettoye = re.sub(r'[^\w\s.,!?;:()"^`@#/-]', ' ', new_tweet)
+    tweet_nettoye = re.sub(r'[^\w\s.,!?;:()"^`@#/-_]', ' ', new_tweet)
     dict["TweetText"] = tweet_nettoye
     return dict
 
