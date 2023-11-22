@@ -70,22 +70,23 @@ with open("copie_tweets.json", 'w', encoding='utf-8') as file_json:
 '''
 
 # Fonction méttant à jour les données
-        
+
+
 def maj_data():
 
     with open("aitweets.json", 'r', encoding='utf-8') as file_json:
         jeu_tweets = json.load(file_json)
-    
+
     with open("copie_tweets.json", 'r', encoding='utf-8') as file_json:
         copy_tweets = json.load(file_json)
 
-    if len(jeu_tweets) > len(copy_tweets) :
+    if len(jeu_tweets) > len(copy_tweets):
         for tweet in jeu_tweets[len(copy_tweets):]:
             autor_temp = rd.choice(creation_autor)
             tweet["Autor"] = autor_temp
 
-    with open("zone_d'atterissage.json", "w",encoding='utf-8') as zone_att:
+    with open("zone_d'atterissage.json", "w", encoding='utf-8') as zone_att:
         data = jeu_tweets
         for tweet in data:
             tweet = zone_atterissage(tweet)
-        json.dump(data, zone_att,indent=2)
+        json.dump(data, zone_att, indent=2)

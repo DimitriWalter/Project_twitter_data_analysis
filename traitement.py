@@ -195,7 +195,7 @@ for tweet in data:
 
 
 df = pd.DataFrame(columns=["Autor", "Hashtags", "Mentions", "Sentiment"],
-                                    index=[np.arange(1, len(data)+1)])
+                  index=[np.arange(1, len(data)+1)])
 
 print(df.shape)
 
