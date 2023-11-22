@@ -92,9 +92,34 @@ topk_users()
 
 '''
 
-# Le dictionnaire avec les hashtags, les utilisateurs regroupe leur nombres
-# de publication chacun,
-# alors on a déjà le nombre de publications par hashatgs, utilisateurs.
+# Top k topics :
+
+dicK_topics = {}
+for elt in td.liste_topics:
+    for t in elt:
+        if t not in dicK_topics:
+            dicK_topics[t] = 1
+        else:
+            dicK_topics[t] += 1
+
+dicK_topics = dict(sorted(dicK_topics.items(), key=lambda item: item[1], reverse=True))
+
+
+def topk_topics():
+    k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des topics : "))
+    top = list(dicK_topics.items())
+    while k > len(top):
+        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des topics car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
+    print(f"\nTop {k} des topics qui reviennent le + souvent : \n")
+    for i in range(k):
+        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+
+
+topk_topics()
+
+
+# Le dictionnaire avec les hashtags, les utilisateurs, les topics regroupe leur nombres de publication chacun,
+# alors on a déjà le nombre de publications par hashatgs, utilisateurs et topics.
 
 # L'ensemble des tweets mentionnant un utilisateur spécifique :
 
