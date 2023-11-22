@@ -262,6 +262,8 @@ for key in all_stopwords.keys():
                 all_stopwords[key].add(m[1:].lower())
     all_stopwords[key].add("rt")
     all_stopwords[key].add("https")
+    all_stopwords[key].add("read")
+    all_stopwords[key].add("via")
 
 # Les stopwords sont des mots couramment utilisés qui sont généralement supprimés dans le traitement
 # du langage naturel car ils ne portent pas une signification importante, ici on les importe dans une liste contenant touts les stopwords dans différentes langues
