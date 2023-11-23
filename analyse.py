@@ -114,6 +114,7 @@ def topk_topics():
     for i in range(k):
         print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
 
+
 '''
 
 topk_topics()

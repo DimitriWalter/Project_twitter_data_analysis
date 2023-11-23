@@ -48,10 +48,10 @@ creation_autor = ['bQoBTcaoGF', 'nvWLmLP', 'LbZzWfDZL_J', 'XHOk', 'KSkjXifu', 't
 
 
 def zone_atterissage(dict):
-    tweet = dict["TweetText"]
-    new_tweet = tweet.replace("\n\n", " ").replace("\n", " ")
-    tweet_nettoye = re.sub(r'[^\w\s.,!?;:()"^`@#/-_]', ' ', new_tweet)
-    dict["TweetText"] = tweet_nettoye
+    tweet = dict["TweetText"]  # affectation du TweeText à une variable tweet
+    new_tweet = tweet.replace("\n\n", " ").replace("\n", " ")  # On remplace les sauts de ligne et les retours à la ligne par des espaces
+    tweet_nettoye = re.sub(r'[^\w\s.,!?;:()"^`@#/-_]', ' ', new_tweet)  # On nettoie le tweet en gardant les espaces, les lettres de touts les alphabets et des car. de ponctuation
+    dict["TweetText"] = tweet_nettoye  # on l'assigne, une fois nettoyé, à notre TweetText
     return dict
 
 

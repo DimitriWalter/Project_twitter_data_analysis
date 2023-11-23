@@ -275,34 +275,34 @@ def preprocess_text(text, stop_words):  # fonction de prétraitement de texte en
     return words  # retourne une chaîne sans les stopwords
 
 
-def extract_topics(tweet):
+def extract_topics(tweet):  # fonction qui extracte pour chaque tweet une liste de topics temporaires
     liste_t = []
     if tweet["TweetLanguage"] != "ko" and tweet["TweetLanguage"] != "fa":  # le corréen et le persan ne sont pas dans le module nltk
 
-        tweet_traitée = preprocess_text(tweet["TweetText"], all_stopwords[tweet["TweetLanguage"]])
-        if tweet_traitée != []:
+        tweet_traitée = preprocess_text(tweet["TweetText"], all_stopwords[tweet["TweetLanguage"]])  # on traite le tweet, avec les stopwrds de la langue en question
+        if tweet_traitée != []:  # si on a des mots en dehors des stopwords alors notre liste n'est pas vide
             temp = []
-            temp.append(tweet_traitée)  # On traite le tweet et on l'ajoute à une liste
+            temp.append(tweet_traitée)  # on ajoute à une liste le tweet traité
 
-            dico = corpora.Dictionary(temp)
-            corpus = [dico.doc2bow(text) for text in temp]
-            lda_model = models.LdaModel(corpus, num_topics=1, id2word=dico, passes=30)
-            topics = lda_model.show_topics(formatted=False)
+            dico = corpora.Dictionary(temp)  # utilisation du modul gensim qui créera un dict à partir du tweet traité qui sera composé de tous les mots uniques présents dans le tweet
+            corpus = [dico.doc2bow(text) for text in temp]  # créer un corpus, qui convertit le texte en une représentation d'une liste de paires (ID de mot, fréquence de ce mot dans le document).
+            lda_model = models.LdaModel(corpus, num_topics=1, id2word=dico, passes=15)  # on utilise Gensim pour faire un modèle LDA avec 1 sujet spécifié, en utilisant le dictionnaire auparavant.
+            topics = lda_model.show_topics(formatted=False)  # on obtient la liste des sujets extraits par un modèle LDA, pour afficher les sujets extraits par le modèle.
 
             for elt in topics[0][1]:
-                liste_t.append(elt[0])
+                liste_t.append(elt[0])  # On récupère chaque topics et on les insère dans une liste
     return liste_t
 
 
-# On fait une fct maj_topics qui s'activera dans collecte data si un tweet est rajouté (voir maj_data), on charge le résultat dans un fichier json la 1ère fois et on le récupère après à chaque fois 
+# On fait une fct maj_topics qui s'activera dans collecte data si un tweet est rajouté (voir maj_data), on charge le résultat dans un fichier json la 1ère fois et on le récupère après à chaque fois
 # sans réexécuter notre code qui prends beaucoup de temps donc le code s'exécutera + vite et il prendra du temps que si un tweet est rajouté :
 
 
 def maj_topics():
     extract = []
     for tweet in data:
-        extract.append(extract_topics(tweet))
-    
+        extract.append(extract_topics(tweet))  # on ajoute à extract la liste des topics temporaires
+
     liste_temp = []
     for ligne in extract:
         for elt in ligne:
@@ -311,13 +311,12 @@ def maj_topics():
                 for ligne in extract:
                     t += ligne.count(elt)
                 x = (elt, t)
-            liste_temp.append(x)
+            liste_temp.append(x)  # liste_temp contiendra tous les différents topics sous forme de tuple avec leur nombres d'occurences dans l'ensemble des tweets
 
     topics = []
     for elt in set(liste_temp):
         if elt[1] > 10:
-            topics.append(elt[0])
-
+            topics.append(elt[0])  # on ajoute à la liste des topics que les éléments revenant plus de 10 fois pour filtrer un minimum
 
     liste_final = []
     for tweet in data:
@@ -325,20 +324,19 @@ def maj_topics():
         for elt in extract_topics(tweet):
             if elt in topics:
                 tp.append(elt)
-            liste_final.append(tp)
+            liste_final.append(tp)  # on ajoute à notre liste finale tous les différents topics de chaque tweet
 
-    with open("topics.json","w") as f:
+    with open("topics.json", "w") as f:
         all_topics = []
         for elt in liste_final:
             dico = {}
             dico[liste_final.index(elt)] = elt
             all_topics.append(dico)
-    
-        json.dump(contenu,f)
+
+        json.dump(contenu, f)  # on écrit le contenu dans un fichier json pour qu'on puisse juste le charger et pas que notre fonction s'exécute à chaque fois(gain de temps)
 
 
-
-with open("topics.json",'r') as fjson:
+with open("topics.json", 'r') as fjson:
     contenu = json.load(fjson)
 
 liste_topics = []
