@@ -1,5 +1,7 @@
 import json
 import traitement as td
+import matplotlib.pyplot as plt
+import numpy as np
 
 with open("zone_d'atterissage.json", 'r', encoding='utf-8') as file_json:
     data = json.load(file_json)
@@ -22,12 +24,18 @@ dicK_hashtags = dict(sorted(dicK_hashtags.items(), key=lambda item: item[1], rev
 def topK_hashtags():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des hashtags : "))
     top = list(dicK_hashtags.items())  # On créé une liste contenant les items du dictionnaire
-    while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre d'hashtags que l'on a
-        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des hashtags car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre d'hashtags alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
-    print(f"\nTop {k} des hashtags qui reviennent le + souvent : \n")
-    for i in range(k):
-        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des hashtags avec le nombres d'occurences à chaque fois
-
+    l_hashtags = []
+    n_hashtags = []
+    for elmnt in top[:k] :
+        l_hashtags.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
+        n_hashtags.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    plt.bar(l_hashtags, n_hashtags)
+    plt.xticks(rotation=30,ha='right')
+    plt.xlabel("Hashtags")
+    plt.ylabel("Nombre")
+    plt.title(f"Tops {k} des hashtags : ")
+    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.show()
 
 '''
 
@@ -51,11 +59,18 @@ dicK_mentions = dict(sorted(dicK_mentions.items(), key=lambda item: item[1], rev
 def topK_mentions():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des mentions : "))
     top = list(dicK_mentions.items())  # On créé une liste contenant les items du dictionnaire
-    while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
-        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des mentions car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
-    print(f"\nTop {k} des mentions qui reviennent le + souvent : \n")
-    for i in range(k):
-        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+    l_mentions = []
+    n_mentions = []
+    for elmnt in top[:k] :
+        l_mentions.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
+        n_mentions.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    plt.bar(l_mentions, n_mentions)
+    plt.xticks(rotation=30,ha='right')
+    plt.xlabel("Mentions")
+    plt.ylabel("Nombre")
+    plt.title(f"Tops {k} des Mentions : ")
+    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.show()
 
 
 '''
@@ -79,11 +94,18 @@ dicK_users = dict(sorted(dicK_users.items(), key=lambda item: item[1], reverse=T
 def topk_users():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des utilisateurs : "))
     top = list(dicK_users.items())  # On créé une liste contenant les items du dictionnaire
-    while k > len(top):  # On teste si la valeur k donnée n'est pas supérieur au nombre de mentions que l'on a
-        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des utilisateurs car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
-    print(f"\nTop {k} des utilisateurs qui reviennent le + souvent : \n")
-    for i in range(k):
-        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+    l_users = []
+    n_users = []
+    for elmnt in top[:k] :
+        l_users.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
+        n_users.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    plt.bar(l_users, n_users)
+    plt.xticks(rotation=30,ha='right')
+    plt.xlabel("Users")
+    plt.ylabel("Nombre")
+    plt.title(f"Tops {k} des Users : ")
+    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.show()
 
 
 '''
@@ -108,11 +130,18 @@ dicK_topics = dict(sorted(dicK_topics.items(), key=lambda item: item[1], reverse
 def topk_topics():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des topics : "))
     top = list(dicK_topics.items())
-    while k > len(top):
-        k = int(input(f"Désolé je ne peux pas t'imprimer le top {k} des topics car il n'y en a que {len(top)}, donne moi un nombre + petit : "))  # Si k supérieur au nombre de mentions alors on renvoie un message d'erreur et on demande au user d'en rentrer un autre
-    print(f"\nTop {k} des topics qui reviennent le + souvent : \n")
-    for i in range(k):
-        print(f"- {i+1}) {top[i][0]} apparait {top[i][1]} fois.")  # On affiche le top K des mentions avec le nombres d'occurences à chaque fois
+    l_topics = []
+    n_topics = []
+    for elmnt in top[:k] :
+        l_topics.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
+        n_topics.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    plt.bar(l_topics, n_topics)
+    plt.xticks(rotation=30,ha='right')
+    plt.xlabel("Topics")
+    plt.ylabel("Nombre")
+    plt.title(f"Tops {k} des Topics : ")
+    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.show()
 
 
 '''
