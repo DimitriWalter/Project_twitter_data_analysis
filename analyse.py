@@ -1,6 +1,7 @@
 import json
 import traitement as td
 import matplotlib.pyplot as plt
+import random as rd
 
 
 with open("zone_d'atterissage.json", 'r', encoding='utf-8') as file_json:
@@ -23,6 +24,8 @@ dicK_hashtags = dict(sorted(dicK_hashtags.items(), key=lambda item: item[1], rev
 
 def topK_hashtags():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des hashtags : "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
     top = list(dicK_hashtags.items())  # On créé une liste contenant les items du dictionnaire
     l_hashtags = []
     n_hashtags = []
@@ -32,17 +35,11 @@ def topK_hashtags():
     plt.bar(l_hashtags, n_hashtags)
     plt.xticks(rotation=30, ha='right')
     plt.xlabel("Hashtags")
-    plt.ylabel("Nombre")
+    plt.ylabel("Occurence")
     plt.title(f"Tops {k} des hashtags : ")
     plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
-
-'''
-
-topK_hashtags()
-
-'''
 
 # TopK des mentions :
 
@@ -59,6 +56,8 @@ dicK_mentions = dict(sorted(dicK_mentions.items(), key=lambda item: item[1], rev
 
 def topK_mentions():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des mentions : "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
     top = list(dicK_mentions.items())  # On créé une liste contenant les items du dictionnaire
     l_mentions = []
     n_mentions = []
@@ -68,17 +67,11 @@ def topK_mentions():
     plt.bar(l_mentions, n_mentions)
     plt.xticks(rotation=30, ha='right')
     plt.xlabel("Mentions")
-    plt.ylabel("Nombre")
+    plt.ylabel("Occurence")
     plt.title(f"Tops {k} des Mentions : ")
     plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
-
-'''
-
-topK_mentions()
-
-'''
 
 # Top k utilisateurs :
 
@@ -94,6 +87,8 @@ dicK_users = dict(sorted(dicK_users.items(), key=lambda item: item[1], reverse=T
 
 def topk_users():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des utilisateurs : "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
     top = list(dicK_users.items())  # On créé une liste contenant les items du dictionnaire
     l_users = []
     n_users = []
@@ -103,17 +98,11 @@ def topk_users():
     plt.bar(l_users, n_users)
     plt.xticks(rotation=30, ha='right')
     plt.xlabel("Users")
-    plt.ylabel("Nombre")
+    plt.ylabel("Occurence")
     plt.title(f"Tops {k} des Users : ")
     plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
-
-'''
-
-topk_users()
-
-'''
 
 # Top k topics :
 
@@ -130,6 +119,8 @@ dicK_topics = dict(sorted(dicK_topics.items(), key=lambda item: item[1], reverse
 
 def topk_topics():
     k = int(input("Donnes moi un nombre k afin que je t'affiche le top k des topics : "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
     top = list(dicK_topics.items())
     l_topics = []
     n_topics = []
@@ -139,20 +130,75 @@ def topk_topics():
     plt.bar(l_topics, n_topics)
     plt.xticks(rotation=30, ha='right')
     plt.xlabel("Topics")
-    plt.ylabel("Nombre")
+    plt.ylabel("Occurence")
     plt.title(f"Tops {k} des Topics : ")
     plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
 
-'''
-
-topk_topics()
-
-'''
-
 # Le dictionnaire avec les hashtags, les utilisateurs, les topics regroupe leur nombres de publication chacun,
 # alors on a déjà le nombre de publications par hashatgs, utilisateurs et topics.
+
+
+def publi_hashtags():
+    k = int(input("Combien veux-tu d'hashtags sur ton graphique ? "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
+    top = list(dicK_hashtags.items())
+    rd.shuffle(top)
+    l_hashtags = []
+    n_hashtags = []
+    for elmnt in top[:k]:
+        l_hashtags.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_hashtags.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
+    plt.bar(l_hashtags, n_hashtags)
+    plt.xticks(rotation=30, ha='right')
+    plt.xlabel("Hashtags")
+    plt.ylabel("Publications")
+    plt.title(f"Nombre de publications pour {k} hashtags : ")
+    plt.subplots_adjust(bottom=0.255, top=0.93)
+    plt.show()
+
+
+def publi_topics():
+    k = int(input("Combien veux-tu de topics sur ton graphique ? "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
+    top = list(dicK_topics.items())
+    l_topics = []
+    n_topics = []
+    rd.shuffle(top)
+    for elmnt in top[:k]:
+        l_topics.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_topics.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
+    plt.bar(l_topics, n_topics)
+    plt.xticks(rotation=30, ha='right')
+    plt.xlabel("Topics")
+    plt.ylabel("Publications")
+    plt.title(f"Nombre de publications pour {k} topics : ")
+    plt.subplots_adjust(bottom=0.255, top=0.93)
+    plt.show()
+
+
+def publi_users():
+    k = int(input("Combien veux-tu d'utilisateurs sur ton graphique ? "))
+    while 0 > k or k > 100:
+        k = int(input("Désolé le nombre que tu as rentré est trop grand, ressaisis-en un : "))
+    top = list(dicK_users.items())  # On créé une liste contenant les items du dictionnaire
+    l_users = []
+    n_users = []
+    rd.shuffle(top)
+    for elmnt in top[:k]:
+        l_users.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_users.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
+    plt.bar(l_users, n_users)
+    plt.xticks(rotation=30, ha='right')
+    plt.xlabel("Users")
+    plt.ylabel("Publications")
+    plt.title(f"Nombre de publications pour {k} users : ")
+    plt.subplots_adjust(bottom=0.255, top=0.93)
+    plt.show()
+
 
 # L'ensemble des tweets mentionnant un utilisateur spécifique :
 
@@ -179,6 +225,7 @@ def tweets_par_mentions():
                         else:
                             tweets_mentions[elt].append(tweet["TweetText"])
                     temp = elt
+    return tweets_mentions
 
 
 '''
@@ -204,6 +251,7 @@ def tweets_par_users():
             tweets_users[tweet["Autor"]].append(tweet["TweetText"])
         else:
             tweets_users[tweet["Autor"]].append(tweet["TweetText"])
+    return tweets_users
 
 
 '''
@@ -221,17 +269,22 @@ print(tweets_users["gkUva"] == l)
 
 # Utilisateurs mentionnant un hashtag spécifique :
 
-tweets_mentions = {}
 
-for tweet in data:
-    if td.liste_hashtags(tweet) != []:
-        for elt in td.liste_hashtags(tweet):
-            if elt not in tweets_mentions:
-                tweets_mentions[elt] = []
-                tweets_mentions[elt].append(tweet['Autor'])
-            else:
-                if tweet["Autor"] not in tweets_mentions[elt]:
-                    tweets_mentions[elt].append(tweet["Autor"])
+def hashtags_par_users():
+
+    tweets_mentions = {}
+
+    for tweet in data:
+        if td.liste_hashtags(tweet) != []:
+            for elt in td.liste_hashtags(tweet):
+                if elt not in tweets_mentions:
+                    tweets_mentions[elt] = []
+                    tweets_mentions[elt].append(tweet['Autor'])
+                else:
+                    if tweet["Autor"] not in tweets_mentions[elt]:
+                        tweets_mentions[elt].append(tweet["Autor"])
+    return tweets_mentions
+
 
 '''
 
@@ -262,14 +315,18 @@ for elt in ltest2:
 
 # Utilisateurs mentionnés par un utilisateur spécifique :
 
-users_andMent = {}
 
-for tweet in data:
-    if tweet["Autor"] not in users_andMent:
-        users_andMent[tweet["Autor"]] = []
-    for mention in td.liste_mentions(tweet):
-        if mention not in users_andMent[tweet["Autor"]]:
-            users_andMent[tweet["Autor"]].append(mention)
+def mentions_par_users():
+    users_andMent = {}
+
+    for tweet in data:
+        if tweet["Autor"] not in users_andMent:
+            users_andMent[tweet["Autor"]] = []
+        for mention in td.liste_mentions(tweet):
+            if mention not in users_andMent[tweet["Autor"]]:
+                users_andMent[tweet["Autor"]].append(mention)
+    return users_andMent
+
 
 '''
 
