@@ -1,7 +1,7 @@
 import json
 import traitement as td
 import matplotlib.pyplot as plt
-import numpy as np
+
 
 with open("zone_d'atterissage.json", 'r', encoding='utf-8') as file_json:
     data = json.load(file_json)
@@ -26,16 +26,17 @@ def topK_hashtags():
     top = list(dicK_hashtags.items())  # On créé une liste contenant les items du dictionnaire
     l_hashtags = []
     n_hashtags = []
-    for elmnt in top[:k] :
-        l_hashtags.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
-        n_hashtags.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    for elmnt in top[:k]:
+        l_hashtags.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_hashtags.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
     plt.bar(l_hashtags, n_hashtags)
-    plt.xticks(rotation=30,ha='right')
+    plt.xticks(rotation=30, ha='right')
     plt.xlabel("Hashtags")
     plt.ylabel("Nombre")
     plt.title(f"Tops {k} des hashtags : ")
-    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
+
 
 '''
 
@@ -61,15 +62,15 @@ def topK_mentions():
     top = list(dicK_mentions.items())  # On créé une liste contenant les items du dictionnaire
     l_mentions = []
     n_mentions = []
-    for elmnt in top[:k] :
-        l_mentions.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
-        n_mentions.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    for elmnt in top[:k]:
+        l_mentions.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_mentions.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
     plt.bar(l_mentions, n_mentions)
-    plt.xticks(rotation=30,ha='right')
+    plt.xticks(rotation=30, ha='right')
     plt.xlabel("Mentions")
     plt.ylabel("Nombre")
     plt.title(f"Tops {k} des Mentions : ")
-    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
 
@@ -96,15 +97,15 @@ def topk_users():
     top = list(dicK_users.items())  # On créé une liste contenant les items du dictionnaire
     l_users = []
     n_users = []
-    for elmnt in top[:k] :
-        l_users.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
-        n_users.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    for elmnt in top[:k]:
+        l_users.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_users.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
     plt.bar(l_users, n_users)
-    plt.xticks(rotation=30,ha='right')
+    plt.xticks(rotation=30, ha='right')
     plt.xlabel("Users")
     plt.ylabel("Nombre")
     plt.title(f"Tops {k} des Users : ")
-    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
 
@@ -132,15 +133,15 @@ def topk_topics():
     top = list(dicK_topics.items())
     l_topics = []
     n_topics = []
-    for elmnt in top[:k] :
-        l_topics.append(elmnt[0]) # création de la liste pour les valeurs en ordonnées
-        n_topics.append(elmnt[1]) # création de la liste pour les valeurs en abscisse
+    for elmnt in top[:k]:
+        l_topics.append(elmnt[0])  # création de la liste pour les valeurs en ordonnées
+        n_topics.append(elmnt[1])  # création de la liste pour les valeurs en abscisse
     plt.bar(l_topics, n_topics)
-    plt.xticks(rotation=30,ha='right')
+    plt.xticks(rotation=30, ha='right')
     plt.xlabel("Topics")
     plt.ylabel("Nombre")
     plt.title(f"Tops {k} des Topics : ")
-    plt.subplots_adjust(bottom=0.255,top=0.93)
+    plt.subplots_adjust(bottom=0.255, top=0.93)
     plt.show()
 
 
@@ -155,26 +156,29 @@ topk_topics()
 
 # L'ensemble des tweets mentionnant un utilisateur spécifique :
 
-tweets_mentions = {}
 
-for tweet in data:
-    temp = ""
-    if td.liste_mentions(tweet) != []:
-        for elt in td.liste_mentions(tweet):
-            if td.liste_mentions(tweet).count(elt) == 1:
-                if elt not in tweets_mentions:
-                    tweets_mentions[elt] = []
-                    tweets_mentions[elt].append(tweet['TweetText'])
-                else:
-                    tweets_mentions[elt].append(tweet["TweetText"])
-            else:
-                if temp != elt:
+def tweets_par_mentions():
+
+    tweets_mentions = {}
+
+    for tweet in data:
+        temp = ""
+        if td.liste_mentions(tweet) != []:
+            for elt in td.liste_mentions(tweet):
+                if td.liste_mentions(tweet).count(elt) == 1:
                     if elt not in tweets_mentions:
                         tweets_mentions[elt] = []
                         tweets_mentions[elt].append(tweet['TweetText'])
                     else:
                         tweets_mentions[elt].append(tweet["TweetText"])
-                temp = elt
+                else:
+                    if temp != elt:
+                        if elt not in tweets_mentions:
+                            tweets_mentions[elt] = []
+                            tweets_mentions[elt].append(tweet['TweetText'])
+                        else:
+                            tweets_mentions[elt].append(tweet["TweetText"])
+                    temp = elt
 
 
 '''
@@ -191,14 +195,16 @@ for elt in tweets_mentions:
 
 # L'ensemble des tweets d'un utilisateur spécifique:
 
-tweets_users = {}
 
-for tweet in data:
-    if tweet["Autor"] not in tweets_users:
-        tweets_users[tweet["Autor"]] = []
-        tweets_users[tweet["Autor"]].append(tweet["TweetText"])
-    else:
-        tweets_users[tweet["Autor"]].append(tweet["TweetText"])
+def tweets_par_users():
+    tweets_users = {}
+    for tweet in data:
+        if tweet["Autor"] not in tweets_users:
+            tweets_users[tweet["Autor"]] = []
+            tweets_users[tweet["Autor"]].append(tweet["TweetText"])
+        else:
+            tweets_users[tweet["Autor"]].append(tweet["TweetText"])
+
 
 '''
 
