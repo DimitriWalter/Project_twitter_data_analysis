@@ -6,4 +6,4 @@ Ce projet de collecte, traitement et analyse de données d'un jeu de tweets en f
 
 
 
-Source utilisées : StackOverflow, Documentation python, Chat Gpt (pour les topics)
+Source utilisées : StackOverflow, Documentation python, Chat Gpt (spécialement pour les topics des tweets).
